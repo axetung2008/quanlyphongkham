@@ -92,7 +92,7 @@
 	// if(check(1,2)){
 	// 	echo "True";
 	// }
-
+	echo "test";
 //Lưu lên cơ sở dữ liệu
 	//lưu thông tin bệnh nhân
 	// $benhnhan = "INSERT INTO benhnhan(ma_benh_nhan,ho_ten,dia_chi,chan_doan) VALUES ('$id_bn','$hoten','$diachi','$chandoan')";
