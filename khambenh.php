@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['user'])){
-    header("location: index.html");
+    header("location: login.html");
     exit();
   }
 ?>
@@ -17,6 +17,12 @@
   <style type="text/css">
     body{
       background: #1abc9c;
+    }
+    label{
+      font-size: 25px;
+    }
+    input{
+      font-size: 25px;
     }
   </style>
 </head>
@@ -36,22 +42,32 @@
   </div>
 </nav>
 
-<div style="margin-left: 100px; margin-right: 100px" >
-  <div style="float: left;background: white;height: 800px; width: 50%;">
+<div style="margin-left: 100px; margin-right: 100px;">
+  <div style="float: left; background: white; height: 800px; width: 50%;">
       <h1 style="text-align: center;">Thông tin bệnh nhân</h1>
       <div style="margin-left: 20px">
         <form action="./php/thembenhnhan.php" method="post">
-            <label for="fname">Họ tên:</label><br>
-            <input type="text" id="fname" name="ho_ten" value="" style="width: 80%"><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <label>Họ tên:</label><br>
+            <input type="text" id="hoten" name="ho_ten" value="" style="width: 80%; height: 35px;"><br><br>
+            <label>Địa chỉ:</label><br>
+            <input type="text" id="diachi" name="dia_chi" value="" style="width: 80%; height: 35px;"><br>
+            <label style="margin-top: 30px">Giới tính</label>
+            <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px">
+            <label>Nam</label>
+            <input type="radio" id="nu" name="gioi_tinh" value="nam" style="margin-left: 50px">
+            <label>Nữ</label><br>
+            <label>Tuổi</label>
+            <input type="text" name="tuoi">
+            <label style="padding-left: 100px">Năm sinh</label>
+            <input type="text" name="nam_sinh"><br>
+
             <input type="submit" value="Submit">
         </form>
         
       </div>
   </div>
 
-  <div style="float: left;background: white;height: 800px; width: 50%;">
+  <div style=" float: left;background: white; height: 800px;width: 50%;">
       <h1>RIGHT</h1>
       <h1>RIGHT</h1>
   </div>
