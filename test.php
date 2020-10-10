@@ -1,7 +1,10 @@
 <?php
 	require_once('./php/config.php');
+	//header("Content-type: text/html; charset=utf-8");
 // Create connection
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+	//mysqli_set_charset($conn, 'UTF8');
+
 
 	$id_bn = $_POST['ma_bn'];
 	$hoten = $_POST['hoten'];
@@ -89,22 +92,32 @@
 
 
 //Debug
-	// if(check(1,2)){
-	// 	echo "True";
-	// }
-	echo "test";
+	
 //Lưu lên cơ sở dữ liệu
 	//lưu thông tin bệnh nhân
-	// $benhnhan = "INSERT INTO benhnhan(ma_benh_nhan,ho_ten,dia_chi,chan_doan) VALUES ('$id_bn','$hoten','$diachi','$chandoan')";
+	$benhnhan = "INSERT INTO benh_nhan(ho_ten,dia_chi,chan_doan) VALUES ('$hoten','$diachi','$chandoan')";
+
+// 	$benhnhan = "SELECT * FROM benh_nhan WHERE ho_ten='Nguyễn Văn C'";
+// 	$result = $conn->query($benhnhan);
+
+// 	if ($result->num_rows > 0) {
+//   // output data of each row
+//   while($row = $result->fetch_assoc()) {
+//     echo "id: " . $row["ma_benh_nhan"]. " - Name: " . $row["ho_ten"]. " " . $row["dia_chi"]. " " . $row["chan_doan"]. "<br>";
+//   }
+// } else {
+//   echo "0 results";
+// }	
 
 	// $thuoc = array("$thuoc1","$thuoc2","$thuoc3","$thuoc4");
 	// $str = $thuoc[0] . "/" . $thuoc[1] . "/" . $thuoc[2] . "/" . $thuoc[3];
 
 	// $sql = "INSERT INTO test(ten_thuoc,cach_uong) VALUES ('$str','$uong1')";
-	// if (mysqli_query($conn, $sql)) {
- //    	echo "New record created successfully";
-	// } else {
- //    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	// }
+	//$conn->query("SET NAMES 'utf8'");
+	if (mysqli_query($conn, $benhnhan)) {
+    	echo "New record created successfully";
+	} else {
+    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	}
 	mysqli_close($conn);
 ?>
