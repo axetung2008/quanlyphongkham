@@ -8,7 +8,7 @@
 
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
 
-	$sql = "SELECT * FROM member where user='$user' and password='$pass'";
+	$sql = "SELECT * FROM tai_khoan where user='$user' and password='$pass'";
 
 	$result = mysqli_query($conn,$sql);
 
@@ -19,7 +19,7 @@
 		header("location: ../chucnang.php");
 		exit();
 	}else{
-		header("location: login.html");
+		header("location: ../login.html");
 		exit();
 		
 	}
