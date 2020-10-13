@@ -6,12 +6,12 @@
 	//mysqli_set_charset($conn, 'UTF8');
 
 
-	$id_bn = $_POST['ma_bn'];
-	$hoten = $_POST['hoten'];
-	$diachi = $_POST['diachi'];
-	$chandoan = $_POST['chandoan'];
+	// $id_bn = $_POST['ma_bn'];
+	// $hoten = $_POST['hoten'];
+	// $diachi = $_POST['diachi'];
+	// $chandoan = $_POST['chandoan'];
 
-	$id_dt = $_POST['ma_dt'];
+	// $id_dt = $_POST['ma_dt'];
 	$thuoc[0] = $_POST['thuoc1'];
 	$thuoc[1] = $_POST['thuoc2'];
 	$thuoc[2] = $_POST['thuoc3'];
@@ -45,7 +45,7 @@
 		array($sang[4],$chieu[4],$toi[4])
 
 	);
-//đánh số cho những loại thuốc nhập vào
+//đánh số 0 cho những loại thuốc nhập vào
 	$flag[0]= 0;
 	$flag[1]= 0;
 	$flag[2]= 0;
@@ -89,13 +89,14 @@
 		array_push($tenthuoc, $temp);
 		array_push($cach_uong, array($sang[$i+1],$chieu[$i+1],$toi[$i+1]));
 	}
-
+	echo count($tenthuoc);
+	print_r($tenthuoc[0]);
 
 //Debug
 	
 //Lưu lên cơ sở dữ liệu
 	//lưu thông tin bệnh nhân
-	$benhnhan = "INSERT INTO benh_nhan(ho_ten,dia_chi,chan_doan) VALUES ('$hoten','$diachi','$chandoan')";
+	// $benhnhan = "INSERT INTO benh_nhan(ho_ten,dia_chi,chan_doan) VALUES ('$hoten','$diachi','$chandoan')";
 
 // 	$benhnhan = "SELECT * FROM benh_nhan WHERE ho_ten='Nguyễn Văn C'";
 // 	$result = $conn->query($benhnhan);
@@ -114,10 +115,10 @@
 
 	// $sql = "INSERT INTO test(ten_thuoc,cach_uong) VALUES ('$str','$uong1')";
 	//$conn->query("SET NAMES 'utf8'");
-	if (mysqli_query($conn, $benhnhan)) {
-    	echo "New record created successfully";
-	} else {
-    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
+	// if (mysqli_query($conn, $benhnhan)) {
+ //    	echo "New record created successfully";
+	// } else {
+ //    	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	// }
 	mysqli_close($conn);
 ?>
