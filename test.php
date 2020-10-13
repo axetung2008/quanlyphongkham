@@ -63,7 +63,7 @@
 	for ($i=0; $i < 4 ; $i++) {
 		for ($j=$i+1; $j <= 3; $j++) { 
 			if($du_lieu[$i]==$du_lieu[$j]){
-				$flag[$i] = $flag[$j];
+				$flag[$j] = $flag[$i];
 			}
 		}
 	}
