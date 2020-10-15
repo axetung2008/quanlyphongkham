@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/index_chung.css">
+  <link rel="stylesheet" type="text/css" href="./css/popup.css">
   <style type="text/css">
     body{
       background: #1abc9c;
@@ -43,7 +44,7 @@
   </div>
 </nav>
 
-<div style="margin-left: 100px; margin-right: 100px;">
+<div style="margin-left: 100px; margin-right: 100px;" id="blur">
 
   <!-- LEFT -->
   <div style="float: left; background: white; height: 800px; width: 50%;">
@@ -110,26 +111,44 @@
             <label>Chi phí</label>
             <input type="" name="chi_phi">
 
-            <br><input type="submit" value="Submit" style="margin-top: 20px">
+<!--             <br><input type="submit" value="Submit" style="margin-top: 20px"> -->
         </form>
-        
+          <a href="#" onclick="toggle()">Click here</a>
       </div>
   </div>
 </div>
 
+<div id="popup">
+  <form>
+    <label>Họ tên</label>
+    <input type=""  id="pop_hoten" name="pop_hoten" value="">
+  </form>
+  <a href="#" onclick="toggle()">Close</a>
+</div>
 
 <script type="text/javascript">
   var d = new Date();
+  
+  
   function returnOlds() {
       var namsinh = document.getElementById("namsinh").value;
       var tuoi = document.getElementById("tuoi");
       tuoi.value = d.getFullYear() - namsinh;
   }
-
   function returnYears(){
       var tuoi = document.getElementById("tuoi").value;
       var namsinh = document.getElementById("namsinh");
       namsinh.value = d.getFullYear() - tuoi;
+  }
+  function toggle() {
+      var blur = document.getElementById("blur");
+      blur.classList.toggle("active");
+      var popup = document.getElementById("popup");
+      popup.classList.toggle("active");
+
+      var name = document.getElementById("hoten").value;
+      document.getElementById("pop_hoten").value = name;
+
   }
 </script>
 
