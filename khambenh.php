@@ -35,8 +35,8 @@
       $("#print").click(function(){
         var mode='iframe';
         var close=mode=="popup";
-        var options={mode:mode,popClose:close};
-        $("div.container").printArea(options);  
+        var options={mode:mode,popClose:close,popTitle:'Don thuoc'};
+        $("div.print_area").printArea(options);  
       });
     });
   </script>
@@ -69,9 +69,9 @@
             <label>Địa chỉ:</label><br>
             <input type="text" id="diachi" name="dia_chi" value="" style="width: 80%; height: 35px;"><br>
             <label style="margin-top: 30px">Giới tính</label>
-            <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px">
+            <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px" onclick="male()">
             <label>Nam</label>
-            <input type="radio" id="nu" name="gioi_tinh" value="nu" style="margin-left: 50px">
+            <input type="radio" id="nu" name="gioi_tinh" value="nu" style="margin-left: 50px" onclick="female()">
             <label>Nữ</label><br>
             <label style="margin-top: 30px">Năm sinh</label>
             <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
@@ -101,6 +101,7 @@
             <input type="number" name="chieu1" style="width: 10%">
             <label>Tối</label>
             <input type="number" name="toi1" style="width: 10%"><br>
+
             <label>2</label>
             <input type="text" name="thuoc2" style="width: 60%;margin-top: 10px">
             <label>Số lượng</label>
@@ -111,7 +112,19 @@
             <input type="number" name="chieu2" style="width: 10%">
             <label>Tối</label>
             <input type="number" name="toi2" style="width: 10%"><br>
+
             <label>3</label>
+            <input type="text" name="thuoc3" style="width: 60%;margin-top: 10px">
+            <label>Số lượng</label>
+            <input type="" name="so_luong" style="width: 15%">
+            <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+            <input type="number" name="sang3" style="width: 10%">
+            <label>Chiều</label>
+            <input type="number" name="chieu3" style="width: 10%">
+            <label>Tối</label>
+            <input type="number" name="toi3" style="width: 10%"><br>
+
+            <label>4</label>
             <input type="text" name="thuoc3" style="width: 60%;margin-top: 10px">
             <label>Số lượng</label>
             <input type="" name="so_luong" style="width: 15%">
@@ -133,18 +146,45 @@
 
 <div id="popup">
   <div class="print_area">
-    <form>
-      <label>Họ tên</label>
-      <input type=""  id="pop_hoten" name="pop_hoten" value="">
-    </form>    
+      <h2 style="text-align: center;"> Đơn thuốc</h2>
+      <table>
+        <tr>
+          <th><h4>Họ tên: </h4></th>
+          <th style="padding-left: 30px"><h4 id="print_name"></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Địa chỉ: </h4></th>
+          <th style="padding-left: 30px"><h4 id="print_diachi"></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Giới tính: </h4></th>
+          <th style="padding-left: 30px"><h4 id="print_gioitinh"></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Tuổi: </h4></th>
+          <th style="padding-left: 30px"><h4 id="print_tuoi"></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Chẩn đoán: </h4></th>
+          <th style="padding-left: 30px"><h4 id="print_chandoan"></h4></th>
+        </tr>
+      </table>
+
   </div>
-  <button id="print">Print</button>
+  <button id="print" onclick="name()">Print</button>
   <a href="#" onclick="toggle()">Close</a>
 </div>
 
 <script type="text/javascript">
   var d = new Date();
-  
+  var nam = 1;
+  var nu = 1;
+  function male(){
+      return nu = 0;
+  }
+  function female(){
+      return nam = 0;
+  }
   
   function returnOlds() {
       var namsinh = document.getElementById("namsinh").value;
@@ -162,10 +202,28 @@
       var popup = document.getElementById("popup");
       popup.classList.toggle("active");
 
+      var diachi = document.getElementById("diachi").value;
       var name = document.getElementById("hoten").value;
-      document.getElementById("pop_hoten").value = name;
+      var tuoi = document.getElementById("tuoi").value;
+      var chandoan = document.getElementById("chan_doan").value;
+
+      var gioitinh = "nam";
+      if(nam == 1 && (nu == 0)){
+        gioitinh = "nam";
+      }
+      if((nam == 0) && (nu ==1)){
+        gioitinh = "nu";
+      }
+
+
+      document.getElementById("print_name").innerHTML = name;
+      document.getElementById("print_diachi").innerHTML = diachi;
+      document.getElementById("print_gioitinh").innerHTML = gioitinh;
+      document.getElementById("print_tuoi").innerHTML = tuoi;
+      document.getElementById("print_chandoan").innerHTML = chandoan;
 
   }
+
 
 </script>
 

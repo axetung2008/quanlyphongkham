@@ -17,7 +17,7 @@
 	transition: 0.5s;
 }
 #popup.active{
-	top: 50%;
+	top: 20%;
 	visibility: visible;
 	opacity: 1;
 	transition: 0.5s;
