@@ -15,6 +15,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/index_chung.css">
   <link rel="stylesheet" type="text/css" href="./css/popup.css">
+  <script src="./js/jquery.js"></script>
+  <script src="./js/jqueryPrint.js"></script>
   <style type="text/css">
     body{
       background: #1abc9c;
@@ -27,6 +29,17 @@
 
     }
   </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#print").click(function(){
+        var mode='iframe';
+        var close=mode=="popup";
+        var options={mode:mode,popClose:close};
+        $("div.container").printArea(options);  
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -119,10 +132,13 @@
 </div>
 
 <div id="popup">
-  <form>
-    <label>Họ tên</label>
-    <input type=""  id="pop_hoten" name="pop_hoten" value="">
-  </form>
+  <div class="print_area">
+    <form>
+      <label>Họ tên</label>
+      <input type=""  id="pop_hoten" name="pop_hoten" value="">
+    </form>    
+  </div>
+  <button id="print">Print</button>
   <a href="#" onclick="toggle()">Close</a>
 </div>
 
@@ -150,6 +166,7 @@
       document.getElementById("pop_hoten").value = name;
 
   }
+
 </script>
 
 
