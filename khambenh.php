@@ -91,50 +91,6 @@
             <label>Chẩn đoán</label><br>
             <textarea id="chan_doan" name="chan_doan" rows="2" cols="75" style="font-size: 20px"></textarea><br>
 
-<!-- 
-            <label>1</label>
-            <input type="text" name="thuoc1" style="width: 60%">
-            <label>Số lượng</label>
-            <input type="" name="so_luong" style="width: 15%">
-            <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-            <input type="number" name="sang1" style="width: 10%">
-            <label>Chiều</label>
-            <input type="number" name="chieu1" style="width: 10%">
-            <label>Tối</label>
-            <input type="number" name="toi1" style="width: 10%"><br>
-
-            <label>2</label>
-            <input type="text" name="thuoc2" style="width: 60%;margin-top: 10px">
-            <label>Số lượng</label>
-            <input type="" name="so_luong" style="width: 15%">
-            <label style="margin-top: 10px; margin-left: 50px">Sáng</label>
-            <input type="number" name="sang2" style="width: 10%">
-            <label>Chiều</label>
-            <input type="number" name="chieu2" style="width: 10%">
-            <label>Tối</label>
-            <input type="number" name="toi2" style="width: 10%"><br>
-
-            <label>3</label>
-            <input type="text" name="thuoc3" style="width: 60%;margin-top: 10px">
-            <label>Số lượng</label>
-            <input type="" name="so_luong" style="width: 15%">
-            <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-            <input type="number" name="sang3" style="width: 10%">
-            <label>Chiều</label>
-            <input type="number" name="chieu3" style="width: 10%">
-            <label>Tối</label>
-            <input type="number" name="toi3" style="width: 10%"><br>
-
-            <label>4</label>
-            <input type="text" name="thuoc3" style="width: 60%;margin-top: 10px">
-            <label>Số lượng</label>
-            <input type="" name="so_luong" style="width: 15%">
-            <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-            <input type="number" name="sang3" style="width: 10%">
-            <label>Chiều</label>
-            <input type="number" name="chieu3" style="width: 10%">
-            <label>Tối</label>
-            <input type="number" name="toi3" style="width: 10%"><br> -->
             <label>Điều trị</label>
             <div class="tabContainer">
               <div class="buttonContainer">
@@ -147,75 +103,75 @@
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc1" style="width: 50%">
+                <input type="text" id="thuoc1" name="thuoc1" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong1" style="width: 15%"><br>
+                <input type="number" id="soluong1" name="so_luong1" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang1" style="width: 10%">
+                <input type="number" id="sang1" name="sang1" step="any" style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu1" style="width: 10%">
+                <input type="number" id="chieu1" name="chieu1" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi1" style="width: 10%">
+                <input type="number" id="toi1" name="toi1" step="any" style="width: 10%">
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc2" style="width: 50%">
+                <input type="text" id="thuoc2" name="thuoc2" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong2" style="width: 15%"><br>
+                <input type="number" id="soluong2" name="so_luong2" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang2" style="width: 10%">
+                <input type="number" id="sang2" name="sang2" step="any"style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu2" style="width: 10%">
+                <input type="number" id="chieu2" name="chieu2" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi2" style="width: 10%">
+                <input type="number" id="toi2" name="toi2" step="any" style="width: 10%">
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc3" style="width: 50%">
+                <input type="text" id="thuoc3" name="thuoc3" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong3" style="width: 15%"><br>
+                <input type="number" id="soluong3" name="so_luong3" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang3" style="width: 10%">
+                <input type="number" id="sang3" name="sang3" step="any" style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu3" style="width: 10%">
+                <input type="number" id="chieu3" name="chieu3" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi3" style="width: 10%">
+                <input type="number" id="toi3" name="toi3" step="any" style="width: 10%">
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc4" style="width: 50%">
+                <input type="text" id="thuoc4" name="thuoc4" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong4" style="width: 15%"><br>
+                <input type="number" id="soluong4" name="so_luong4" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang4" style="width: 10%">
+                <input type="number" id="sang4" name="sang4" step="any" style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu4" style="width: 10%">
+                <input type="number" id="chieu4" name="chieu4" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi4" style="width: 10%">
+                <input type="number" id="toi4" name="toi4" step="any" style="width: 10%">
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc5" style="width: 50%">
+                <input type="text" id="thuoc5" name="thuoc5" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong5" style="width: 15%"><br>
+                <input type="number" id="soluong5" name="so_luong5" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang5" style="width: 10%">
+                <input type="number" id="sang5" name="sang5" step="any" style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu5" style="width: 10%">
+                <input type="number" id="chieu5" name="chieu5" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi5" style="width: 10%">
+                <input type="number" id="toi5" name="toi5" step="any" style="width: 10%">
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" name="thuoc6" style="width: 50%">
+                <input type="text" id="thuoc6" name="thuoc6" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" name="so_luong6" style="width: 15%"><br>
+                <input type="number" id="soluong6" name="so_luong6" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
-                <input type="number" name="sang6" style="width: 10%">
+                <input type="number" id="sang6" name="sang6" step="any" style="width: 10%">
                 <label>Chiều</label>
-                <input type="number" name="chieu6" style="width: 10%">
+                <input type="number" id="chieu6" name="chieu6" step="any" style="width: 10%">
                 <label>Tối</label>
-                <input type="number" name="toi6" style="width: 10%">
+                <input type="number" id="toi6" name="toi6" step="any" style="width: 10%">
               </div>
             </div>
             <label style="margin-top: 30px">Chi phí</label>
@@ -223,7 +179,7 @@
 
             <br><input type="submit" value="Submit" style="margin-top: 20px">
         </form>
-          <a href="#" onclick="toggle()">Click here</a>
+          <a href="#" onclick="toggle(),takeData()">Click here</a>
       </div>
   </div>
 </div>
@@ -231,7 +187,7 @@
 <div id="popup">
   <div class="print_area">
       <h2 style="text-align: center;"> Đơn thuốc</h2>
-      <table>
+      <table border="1">
         <tr>
           <th><h4>Họ tên: </h4></th>
           <th style="padding-left: 30px"><h4 id="print_name"></h4></th>
@@ -252,6 +208,21 @@
           <th><h4>Chẩn đoán: </h4></th>
           <th style="padding-left: 30px"><h4 id="print_chandoan"></h4></th>
         </tr>
+        <tr>
+          <th><h4>STT</h4></th>
+          <th style="padding-left: 100px"><h4>Tên thuốc</h4></th>
+          <th style="padding-left: 100px"><h4>Số lượng</h4></th>
+        </tr>
+        <tr>
+          <th><h4>1</h4></th>
+          <th style="padding-left: 30px"><h4 id="print_thuoc1"></h4></th>
+          <th style="padding-left: 100px; padding-right: 50px"><h4 id="print_soluong1"></h4></th>
+        </tr>
+        <tr>
+          <th>Cách uống</th>
+          <th><h4 id="print_sang1"></h4></th>
+        </tr>
+
       </table>
 
   </div>
@@ -286,10 +257,19 @@
       var popup = document.getElementById("popup");
       popup.classList.toggle("active");
 
+  }
+
+  function takeData(){
       var diachi = document.getElementById("diachi").value;
       var name = document.getElementById("hoten").value;
       var tuoi = document.getElementById("tuoi").value;
       var chandoan = document.getElementById("chan_doan").value;
+
+      var thuoc1 = document.getElementById("thuoc1").value;
+      var soluong1 = document.getElementById("soluong1").value;
+      var sang1 = document.getElementById("sang1").value;
+      var chieu1 = document.getElementById("chieu1").value;
+      var toi1 = document.getElementById("toi1").value;
 
       var gioitinh = "nam";
       if(nam == 1 && (nu == 0)){
@@ -299,15 +279,27 @@
         gioitinh = "nu";
       }
 
-
       document.getElementById("print_name").innerHTML = name;
       document.getElementById("print_diachi").innerHTML = diachi;
       document.getElementById("print_gioitinh").innerHTML = gioitinh;
       document.getElementById("print_tuoi").innerHTML = tuoi;
       document.getElementById("print_chandoan").innerHTML = chandoan;
 
-  }
+      document.getElementById("print_thuoc1").innerHTML = thuoc1;
+      document.getElementById("print_soluong1").innerHTML = soluong1+" "+"viên";
+      if(sang1 != "" && chieu1 != "" && toi1 != ""){
+        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1+"-"+" "+"Chiều"+" "+ chieu1+" "+"-"+"Tối"+" "+toi1;
+      }else if(sang1 != "" && chieu1 != "" && toi1==""){
+        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1+"-"+" "+"Chiều"+" "+ chieu1;
+      }else if(sang1 != "" && chieu1 == "" && toi1== ""){
+        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1;
+      }else if(toi1 != "" && chieu1 == "" && sang1 == ""){
+        document.getElementById("print_sang1").innerHTML = "Tối"+" "+toi1;
+      }
+      //document.getElementById("print_chieu").innerHTML = chandoan;
 
+
+  }
   var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
   var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
 
