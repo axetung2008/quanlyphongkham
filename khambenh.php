@@ -15,6 +15,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/index_chung.css">
   <link rel="stylesheet" type="text/css" href="./css/popup.css">
+  <link rel="stylesheet" type="text/css" href="./css/tab.css">
   <script src="./js/jquery.js"></script>
   <script src="./js/jqueryPrint.js"></script>
   <style type="text/css">
@@ -90,7 +91,7 @@
             <label>Chẩn đoán</label><br>
             <textarea id="chan_doan" name="chan_doan" rows="2" cols="75" style="font-size: 20px"></textarea><br>
 
-            <label style="margin-top: 20px">Thuốc điều trị</label><br>
+<!-- 
             <label>1</label>
             <input type="text" name="thuoc1" style="width: 60%">
             <label>Số lượng</label>
@@ -133,11 +134,94 @@
             <label>Chiều</label>
             <input type="number" name="chieu3" style="width: 10%">
             <label>Tối</label>
-            <input type="number" name="toi3" style="width: 10%"><br>
-            <label>Chi phí</label>
+            <input type="number" name="toi3" style="width: 10%"><br> -->
+            <label>Điều trị</label>
+            <div class="tabContainer">
+              <div class="buttonContainer">
+                <button type="button" onclick="showPanel(0,'#6E6E6E')">Loại 1</button>
+                <button type="button" onclick="showPanel(1,'#6E6E6E')">Loại 2</button>
+                <button type="button" onclick="showPanel(2,'#6E6E6E')">Loại 3</button>
+                <button type="button" onclick="showPanel(3,'#6E6E6E')">Loại 4</button>
+                <button type="button" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
+                <button type="button" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc1" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong1" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang1" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu1" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi1" style="width: 10%">
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc2" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong2" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang2" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu2" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi2" style="width: 10%">
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc3" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong3" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang3" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu3" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi3" style="width: 10%">
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc4" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong4" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang4" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu4" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi4" style="width: 10%">
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc5" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong5" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang5" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu5" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi5" style="width: 10%">
+              </div>
+              <div class="tabPanel">
+                <label>Tên thuốc</label>
+                <input type="text" name="thuoc6" style="width: 50%">
+                <label>Số lượng</label>
+                <input type="number" name="so_luong6" style="width: 15%"><br>
+                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <input type="number" name="sang6" style="width: 10%">
+                <label>Chiều</label>
+                <input type="number" name="chieu6" style="width: 10%">
+                <label>Tối</label>
+                <input type="number" name="toi6" style="width: 10%">
+              </div>
+            </div>
+            <label style="margin-top: 30px">Chi phí</label>
             <input type="" name="chi_phi">
 
-<!--             <br><input type="submit" value="Submit" style="margin-top: 20px"> -->
+            <br><input type="submit" value="Submit" style="margin-top: 20px">
         </form>
           <a href="#" onclick="toggle()">Click here</a>
       </div>
@@ -223,6 +307,24 @@
       document.getElementById("print_chandoan").innerHTML = chandoan;
 
   }
+
+  var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
+  var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
+
+  function showPanel(panelIndex,colorCode) {
+    tabButtons.forEach(function(node){
+        node.style.backgroundColor="";
+        node.style.color="";
+    });
+    tabButtons[panelIndex].style.backgroundColor=colorCode;
+    tabButtons[panelIndex].style.color="white";
+    tabPanels.forEach(function(node){
+        node.style.display="none";
+    });
+    tabPanels[panelIndex].style.display="block";
+    tabPanels[panelIndex].style.backgroundColor=colorCode;
+  }
+  showPanel(0,'#6E6E6E');
 
 
 </script>

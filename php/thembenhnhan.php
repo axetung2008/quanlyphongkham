@@ -13,6 +13,9 @@
 	$thuoc[0] = $_POST['thuoc1'];
 	$thuoc[1] = $_POST['thuoc2'];
 	$thuoc[2] = $_POST['thuoc3'];
+	$thuoc[3] = $_POST['thuoc4'];
+	$thuoc[4] = $_POST['thuoc5'];
+	$thuoc[5] = $_POST['thuoc6'];
 
 	$sang[1] = $_POST['sang1'];
 	$chieu[1] = $_POST['chieu1'];
@@ -26,20 +29,42 @@
 	$chieu[3] = $_POST['chieu3'];
 	$toi[3] = $_POST['toi3'];
 
+	$sang[4] = $_POST['sang4'];
+	$chieu[4] = $_POST['chieu4'];
+	$toi[4] = $_POST['toi4'];
+
+	$sang[5] = $_POST['sang5'];
+	$chieu[5] = $_POST['chieu5'];
+	$toi[5] = $_POST['toi5'];
+
+	$sang[6] = $_POST['sang6'];
+	$chieu[6] = $_POST['chieu6'];
+	$toi[6] = $_POST['toi6'];
+
+	$soluong[1] = $_POST['so_luong1'];
+	$soluong[2] = $_POST['so_luong2'];
+	$soluong[3] = $_POST['so_luong3'];
+	$soluong[4] = $_POST['so_luong4'];
+	$soluong[5] = $_POST['so_luong5'];
+	$soluong[6] = $_POST['so_luong6'];
+
 	$chiphi = $_POST['chi_phi'];
 
 	$dulieu = array(
-		array($sang[1],$chieu[1],$toi[1]),
-		array($sang[2],$chieu[2],$toi[2]),
-		array($sang[3],$chieu[3],$toi[3])
+		array($sang[1],$chieu[1],$toi[1],$soluong[1]),
+		array($sang[2],$chieu[2],$toi[2],$soluong[2]),
+		array($sang[3],$chieu[3],$toi[3],$soluong[3]),
+		array($sang[4],$chieu[4],$toi[4],$soluong[4]),
+		array($sang[5],$chieu[5],$toi[5],$soluong[5]),
+		array($sang[6],$chieu[6],$toi[6],$soluong[6])
 	);
 
 	$flag[0]= 0;
 	$flag[1]= 0;
 	$flag[2]= 0;
-	//$flag[3]= 0;
-
-
+	$flag[3]= 0;
+	$flag[4]= 0;
+	$flag[5]= 0;
 
 
 //Them thong tin benh nhan 
@@ -76,15 +101,15 @@
 
 //đánh số thứ tự cho những loại thuốc nhập vào
 	$c = 1;
-	for ($i=0; $i < 3; $i++) { 
+	for ($i=0; $i < 6; $i++) { 
 		if($thuoc[$i]!= ""){
 			$flag[$i] = $c;
 		}
 		$c++;
 	}
 //những loại thuốc cùng cách uống sẽ có chung điểm flag
-	for ($i=0; $i < 3 ; $i++) {
-		for ($j=$i+1; $j <= 2; $j++) { 
+	for ($i=0; $i < 6 ; $i++) {
+		for ($j=$i+1; $j <= 5; $j++) { 
 			if($dulieu[$i]==$dulieu[$j]){
 				$flag[$i] = $flag[$j];
 			}
@@ -94,12 +119,13 @@
 // //những loại thuốc chung điểm flag thì sẽ được gom lại
 	$tenthuoc = array();
 	$cach_uong = array();
-	for ($i=0; $i < 3 ; $i++) { 
+	$so_luong = array();
+	for ($i=0; $i < 6 ; $i++) { 
 		if($flag[$i] == 0){
 			continue;
 		}
 		$temp = $thuoc[$i];
-		for ($j=$i+1; $j <= 2; $j++) { 
+		for ($j=$i+1; $j <= 5; $j++) { 
 			if(($flag[$i] == $flag[$j]) && ($flag[$j] != 0)){
 				$temp = $temp . "/" . $thuoc[$j];
 				$flag[$j] = 0;
@@ -107,8 +133,10 @@
 		}
 		$flag[$i] = 0;
 		$u = $sang[$i+1] . "/" . $chieu[$i+1] . "/" . $toi[$i+1];
+		$sl = $soluong[$i+1];
 		array_push($tenthuoc, $temp);
 		array_push($cach_uong, $u);
+		array_push($so_luong, $sl);
 	}
 
 	$sum_thuoc = count($tenthuoc);
@@ -118,7 +146,8 @@
 	while($sum_thuoc != 0){	
 		$thuoc = $tenthuoc[$t];
 		$cach = $cach_uong[$t];
-		$chitiet = "INSERT INTO chi_tiet_don_thuoc(ten_thuoc,ma_don_thuoc,cach_uong) VALUES ('$thuoc','$ma_dt','$cach')";
+		$solg = $so_luong[$t];
+		$chitiet = "INSERT INTO chi_tiet_don_thuoc(ten_thuoc,ma_don_thuoc,cach_uong,so_luong) VALUES ('$thuoc','$ma_dt','$cach','$solg')";
 		$conn->query($chitiet);
 		$t++;
 		$sum_thuoc--;
