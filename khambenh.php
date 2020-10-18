@@ -187,7 +187,7 @@
 <div id="popup">
   <div class="print_area">
       <h2 style="text-align: center;"> Đơn thuốc</h2>
-      <table border="1">
+      <table>
         <tr>
           <th><h4>Họ tên: </h4></th>
           <th style="padding-left: 30px"><h4 id="print_name"></h4></th>
@@ -210,19 +210,26 @@
         </tr>
         <tr>
           <th><h4>STT</h4></th>
-          <th style="padding-left: 100px"><h4>Tên thuốc</h4></th>
+          <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
           <th style="padding-left: 100px"><h4>Số lượng</h4></th>
         </tr>
-        <tr>
-          <th><h4>1</h4></th>
-          <th style="padding-left: 30px"><h4 id="print_thuoc1"></h4></th>
-          <th style="padding-left: 100px; padding-right: 50px"><h4 id="print_soluong1"></h4></th>
-        </tr>
-        <tr>
-          <th>Cách uống</th>
-          <th><h4 id="print_sang1"></h4></th>
-        </tr>
+        <tr id="dong1"></tr>
+        <tr id="cach1"></tr>
 
+        <tr id="dong2"></tr>
+        <tr id="cach2"></tr>
+
+        <tr id="dong3"></tr>
+        <tr id="cach3"></tr>
+
+        <tr id="dong4"></tr>
+        <tr id="cach4"></tr>
+
+        <tr id="dong5"></tr>
+        <tr id="cach5"></tr>
+
+        <tr id="dong6"></tr>
+        <tr id="cach6"></tr>
       </table>
 
   </div>
@@ -265,11 +272,48 @@
       var tuoi = document.getElementById("tuoi").value;
       var chandoan = document.getElementById("chan_doan").value;
 
-      var thuoc1 = document.getElementById("thuoc1").value;
-      var soluong1 = document.getElementById("soluong1").value;
-      var sang1 = document.getElementById("sang1").value;
-      var chieu1 = document.getElementById("chieu1").value;
-      var toi1 = document.getElementById("toi1").value;
+      var thuoc = [];
+      thuoc.push(document.getElementById("thuoc1").value);
+      thuoc.push(document.getElementById("thuoc2").value);
+      thuoc.push(document.getElementById("thuoc3").value);
+      thuoc.push(document.getElementById("thuoc4").value);
+      thuoc.push(document.getElementById("thuoc5").value);
+      thuoc.push(document.getElementById("thuoc6").value);
+
+      var soluong = [];
+      soluong.push(document.getElementById("soluong1").value);
+      soluong.push(document.getElementById("soluong2").value);
+      soluong.push(document.getElementById("soluong3").value);
+      soluong.push(document.getElementById("soluong4").value);
+      soluong.push(document.getElementById("soluong5").value);
+      soluong.push(document.getElementById("soluong6").value);
+
+      var sang = [];
+      sang.push(document.getElementById("sang1").value);
+      sang.push(document.getElementById("sang2").value);
+      sang.push(document.getElementById("sang3").value);
+      sang.push(document.getElementById("sang4").value);
+      sang.push(document.getElementById("sang5").value);
+      sang.push(document.getElementById("sang6").value);
+
+      var chieu = [];
+
+      chieu.push(document.getElementById("chieu1").value);
+      chieu.push(document.getElementById("chieu2").value);
+      chieu.push(document.getElementById("chieu3").value);
+      chieu.push(document.getElementById("chieu4").value);
+      chieu.push(document.getElementById("chieu5").value);
+      chieu.push(document.getElementById("chieu6").value);
+
+      var toi = [];
+      toi.push(document.getElementById("toi1").value);
+      toi.push(document.getElementById("toi2").value);
+      toi.push(document.getElementById("toi3").value);
+      toi.push(document.getElementById("toi4").value);
+      toi.push(document.getElementById("toi5").value);
+      toi.push(document.getElementById("toi6").value);
+
+      
 
       var gioitinh = "nam";
       if(nam == 1 && (nu == 0)){
@@ -284,17 +328,32 @@
       document.getElementById("print_gioitinh").innerHTML = gioitinh;
       document.getElementById("print_tuoi").innerHTML = tuoi;
       document.getElementById("print_chandoan").innerHTML = chandoan;
+      
+      var dong = ["dong1","dong2","dong3","dong4","dong5","dong6"];
+      var cachuong = ["cach1","cach2","cach3","cach4","cach5","cach6"];
+      for (var i = 0; i < thuoc.length; i++){
+        if(thuoc[i] != ""){
+          var print = "<tr>";
+          print += "<th>" + "<h4>" + (i+1) + "</h4>" + "</th>";
+          print += '<th style="padding-left: 30px">' + "<h4>" + thuoc[i] + "</h4>" + "</th>";
+          print += '<th style="padding-left: 100px">' + "<h4>" + soluong[i] + " " + "viên" + "</h4>" + "</th>";
+          print += "</tr>";
+          document.getElementById(dong[i]).innerHTML = print;
+          var print_cach = "<tr>";
+          print_cach += "<th>" + "Cách uống" + "</th>";
+          if(sang[i] != "" && chieu[i] != "" && toi[i] != ""){
+            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"-"+" "+"Chiều"+" "+ chieu[i]+" "+"-"+"Tối"+" "+toi[i] + "</th>";
+          }else if(sang[i] != "" && chieu[i] != "" && toi[i]==""){
+            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"-"+" "+"Chiều"+" "+ chieu[i] + "</th>";
+          }else if(sang[i] != "" && chieu[i] == "" && toi[i]== ""){
+            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"</th>";
+          }else if(toi[i] != "" && chieu[i] == "" && sang[i] == ""){
+            print_cach += '<th style="padding-left: 30px">' + "Tối"+" "+toi[i] + "</th>";
+          }
+          print_cach += "</tr>";
+          document.getElementById(cachuong[i]).innerHTML = print_cach;
 
-      document.getElementById("print_thuoc1").innerHTML = thuoc1;
-      document.getElementById("print_soluong1").innerHTML = soluong1+" "+"viên";
-      if(sang1 != "" && chieu1 != "" && toi1 != ""){
-        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1+"-"+" "+"Chiều"+" "+ chieu1+" "+"-"+"Tối"+" "+toi1;
-      }else if(sang1 != "" && chieu1 != "" && toi1==""){
-        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1+"-"+" "+"Chiều"+" "+ chieu1;
-      }else if(sang1 != "" && chieu1 == "" && toi1== ""){
-        document.getElementById("print_sang1").innerHTML = "Sáng"+" "+sang1;
-      }else if(toi1 != "" && chieu1 == "" && sang1 == ""){
-        document.getElementById("print_sang1").innerHTML = "Tối"+" "+toi1;
+        }
       }
       //document.getElementById("print_chieu").innerHTML = chandoan;
 
