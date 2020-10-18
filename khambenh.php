@@ -16,6 +16,7 @@
   <link rel="stylesheet" type="text/css" href="./css/index_chung.css">
   <link rel="stylesheet" type="text/css" href="./css/popup.css">
   <link rel="stylesheet" type="text/css" href="./css/tab.css">
+  <link rel="stylesheet" type="text/css" href="./css/button.css">
   <script src="./js/jquery.js"></script>
   <script src="./js/jqueryPrint.js"></script>
   <style type="text/css">
@@ -64,11 +65,11 @@
   <div style="float: left; background: white; height: 800px; width: 50%;">
       <h1 style="text-align: center;">Thông tin bệnh nhân</h1>
       <div style="margin-left: 20px">
-        <form action="./php/thembenhnhan.php" method="post">
+        <form name="myForm" action="./php/thembenhnhan.php" method="post">
             <label>Họ tên:</label><br>
-            <input type="text" id="hoten" name="ho_ten" value="" style="width: 80%; height: 35px;"><br><br>
+            <input type="text" id="hoten" name="ho_ten" required="" style="width: 80%; height: 35px;"><br><br>
             <label>Địa chỉ:</label><br>
-            <input type="text" id="diachi" name="dia_chi" value="" style="width: 80%; height: 35px;"><br>
+            <input type="text" id="diachi" name="dia_chi" required="" style="width: 80%; height: 35px;"><br>
             <label style="margin-top: 30px">Giới tính</label>
             <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px" onclick="male()">
             <label>Nam</label>
@@ -77,7 +78,7 @@
             <label style="margin-top: 30px">Năm sinh</label>
             <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
             <label style="margin-left: 50px">Tuổi</label>
-            <input type="" name="tuoi" id="tuoi" style="width: 80px" onchange="returnYears()"><br>
+            <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
 
       <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
         
@@ -89,7 +90,7 @@
       <h1 style="text-align: center;">Đơn thuốc</h1>
       <div style="margin-left: 20px">
             <label>Chẩn đoán</label><br>
-            <textarea id="chan_doan" name="chan_doan" rows="2" cols="75" style="font-size: 20px"></textarea><br>
+            <textarea id="chan_doan" name="chan_doan" required="" rows="2"  style="font-size: 20px;width: 90%"></textarea><br>
 
             <label>Điều trị</label>
             <div class="tabContainer">
@@ -103,9 +104,9 @@
               </div>
               <div class="tabPanel">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc1" name="thuoc1" style="width: 50%">
+                <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%">
                 <label>Số lượng</label>
-                <input type="number" id="soluong1" name="so_luong1" step="any" style="width: 15%"><br>
+                <input type="number" id="soluong1" required="" name="so_luong1" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
                 <input type="number" id="sang1" name="sang1" step="any" style="width: 10%">
                 <label>Chiều</label>
@@ -174,12 +175,11 @@
                 <input type="number" id="toi6" name="toi6" step="any" style="width: 10%">
               </div>
             </div>
-            <label style="margin-top: 30px">Chi phí</label>
-            <input type="" name="chi_phi">
+            <label style="margin-top: 0px">Chi phí</label>
+            <input id="chiphi" type="" required="" name="chi_phi"><br><br>
 
-            <br><input type="submit" value="Submit" style="margin-top: 20px">
-        </form>
-          <a href="#" onclick="toggle(),takeData()">Click here</a>
+
+          <button type="button" class="btn btn3" onclick="toggle(),takeData()" style="width: 85%;">Xem đơn thuốc</button>
       </div>
   </div>
 </div>
@@ -233,8 +233,13 @@
       </table>
 
   </div>
-  <button id="print" onclick="name()">Print</button>
-  <a href="#" onclick="toggle()">Close</a>
+
+  <button type="submit" class="btn btn1">Lưu</button>
+  <button class="btn btn1" type="button" id="print" onclick="name()">Print</button>
+  
+  
+  <button type="button" class="btn btn2" onclick="toggle()">Close</button>
+  </form>
 </div>
 
 <script type="text/javascript">
@@ -249,28 +254,28 @@
   }
   
   function returnOlds() {
-      var namsinh = document.getElementById("namsinh").value;
-      var tuoi = document.getElementById("tuoi");
-      tuoi.value = d.getFullYear() - namsinh;
+    var namsinh = document.getElementById("namsinh").value;
+    var tuoi = document.getElementById("tuoi");
+    tuoi.value = d.getFullYear() - namsinh;
   }
   function returnYears(){
-      var tuoi = document.getElementById("tuoi").value;
-      var namsinh = document.getElementById("namsinh");
-      namsinh.value = d.getFullYear() - tuoi;
+    var tuoi = document.getElementById("tuoi").value;
+    var namsinh = document.getElementById("namsinh");
+    namsinh.value = d.getFullYear() - tuoi;
   }
   function toggle() {
-      var blur = document.getElementById("blur");
-      blur.classList.toggle("active");
-      var popup = document.getElementById("popup");
-      popup.classList.toggle("active");
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
 
   }
 
   function takeData(){
-      var diachi = document.getElementById("diachi").value;
-      var name = document.getElementById("hoten").value;
-      var tuoi = document.getElementById("tuoi").value;
-      var chandoan = document.getElementById("chan_doan").value;
+    var diachi = document.getElementById("diachi").value;
+    var name = document.getElementById("hoten").value;
+    var tuoi = document.getElementById("tuoi").value;
+    var chandoan = document.getElementById("chan_doan").value;
 
       var thuoc = [];
       thuoc.push(document.getElementById("thuoc1").value);
