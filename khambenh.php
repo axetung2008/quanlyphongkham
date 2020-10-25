@@ -12,13 +12,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="./css/index_chung.css">
   <link rel="stylesheet" type="text/css" href="./css/popup.css">
   <link rel="stylesheet" type="text/css" href="./css/tab.css">
   <link rel="stylesheet" type="text/css" href="./css/button.css">
   <script src="./js/jquery.js"></script>
   <script src="./js/jqueryPrint.js"></script>
+
   <style type="text/css">
     body{
       background: #1abc9c;
@@ -42,6 +43,8 @@
       });
     });
   </script>
+
+  <script src="./js/suggest.js"></script>
 </head>
 <body>
 
@@ -102,9 +105,9 @@
                 <button type="button" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
                 <button type="button" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab1">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%">
+                <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong1" required="" name="so_luong1" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -114,7 +117,7 @@
                 <label>Tối</label>
                 <input type="number" id="toi1" name="toi1" step="any" style="width: 10%">
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab2">
                 <label>Tên thuốc</label>
                 <input type="text" id="thuoc2" name="thuoc2" style="width: 50%">
                 <label>Số lượng</label>
@@ -126,7 +129,7 @@
                 <label>Tối</label>
                 <input type="number" id="toi2" name="toi2" step="any" style="width: 10%">
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab3">
                 <label>Tên thuốc</label>
                 <input type="text" id="thuoc3" name="thuoc3" style="width: 50%">
                 <label>Số lượng</label>
@@ -138,7 +141,7 @@
                 <label>Tối</label>
                 <input type="number" id="toi3" name="toi3" step="any" style="width: 10%">
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab4">
                 <label>Tên thuốc</label>
                 <input type="text" id="thuoc4" name="thuoc4" style="width: 50%">
                 <label>Số lượng</label>
@@ -150,7 +153,7 @@
                 <label>Tối</label>
                 <input type="number" id="toi4" name="toi4" step="any" style="width: 10%">
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab5">
                 <label>Tên thuốc</label>
                 <input type="text" id="thuoc5" name="thuoc5" style="width: 50%">
                 <label>Số lượng</label>
@@ -162,7 +165,7 @@
                 <label>Tối</label>
                 <input type="number" id="toi5" name="toi5" step="any" style="width: 10%">
               </div>
-              <div class="tabPanel">
+              <div class="tabPanel" id="tab6">
                 <label>Tên thuốc</label>
                 <input type="text" id="thuoc6" name="thuoc6" style="width: 50%">
                 <label>Số lượng</label>
@@ -173,6 +176,11 @@
                 <input type="number" id="chieu6" name="chieu6" step="any" style="width: 10%">
                 <label>Tối</label>
                 <input type="number" id="toi6" name="toi6" step="any" style="width: 10%">
+              </div>
+              <div class="suggest">
+                <div id="show-list">
+                  <!-- Gợi ý đơn thuốc -->
+                </div>
               </div>
             </div>
             <label style="margin-top: 0px">Chi phí</label>

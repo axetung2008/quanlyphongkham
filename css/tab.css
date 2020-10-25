@@ -34,3 +34,9 @@
 .tabPanel input{
     color: black;
 }
+.suggest{
+    position: absolute;
+    top : 450px;
+    width: 350px;
+    padding-left: 150px
+}
