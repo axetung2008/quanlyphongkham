@@ -20,6 +20,7 @@
   <script src="./js/jquery.js"></script>
   <script src="./js/jqueryPrint.js"></script>
 
+
   <style type="text/css">
     body{
       background: #1abc9c;
@@ -98,12 +99,12 @@
             <label>Điều trị</label>
             <div class="tabContainer">
               <div class="buttonContainer">
-                <button type="button" onclick="showPanel(0,'#6E6E6E')">Loại 1</button>
-                <button type="button" onclick="showPanel(1,'#6E6E6E')">Loại 2</button>
-                <button type="button" onclick="showPanel(2,'#6E6E6E')">Loại 3</button>
-                <button type="button" onclick="showPanel(3,'#6E6E6E')">Loại 4</button>
-                <button type="button" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
-                <button type="button" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
+                <button type="button" id="type1" onclick="showPanel(0,'#6E6E6E')">Loại 1</button>
+                <button type="button" id="type2" onclick="showPanel(1,'#6E6E6E')">Loại 2</button>
+                <button type="button" id="type3" onclick="showPanel(2,'#6E6E6E')">Loại 3</button>
+                <button type="button" id="type4" onclick="showPanel(3,'#6E6E6E')">Loại 4</button>
+                <button type="button" id="type5" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
+                <button type="button" id="type6" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
               </div>
               <div class="tabPanel" id="tab1">
                 <label>Tên thuốc</label>
@@ -119,7 +120,7 @@
               </div>
               <div class="tabPanel" id="tab2">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc2" name="thuoc2" style="width: 50%">
+                <input type="text" id="thuoc2" name="thuoc2" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong2" name="so_luong2" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -131,7 +132,7 @@
               </div>
               <div class="tabPanel" id="tab3">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc3" name="thuoc3" style="width: 50%">
+                <input type="text" id="thuoc3" name="thuoc3" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong3" name="so_luong3" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -143,7 +144,7 @@
               </div>
               <div class="tabPanel" id="tab4">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc4" name="thuoc4" style="width: 50%">
+                <input type="text" id="thuoc4" name="thuoc4" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong4" name="so_luong4" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -155,7 +156,7 @@
               </div>
               <div class="tabPanel" id="tab5">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc5" name="thuoc5" style="width: 50%">
+                <input type="text" id="thuoc5" name="thuoc5" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong5" name="so_luong5" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -167,7 +168,7 @@
               </div>
               <div class="tabPanel" id="tab6">
                 <label>Tên thuốc</label>
-                <input type="text" id="thuoc6" name="thuoc6" style="width: 50%">
+                <input type="text" id="thuoc6" name="thuoc6" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong6" name="so_luong6" step="any" style="width: 15%"><br>
                 <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
@@ -369,9 +370,9 @@
         }
       }
       //document.getElementById("print_chieu").innerHTML = chandoan;
-
-
   }
+
+  //tab
   var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
   var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
 
