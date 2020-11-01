@@ -1,25 +1,26 @@
 <?php
-	require_once('./php/config.php');
-	//header("Content-type: text/html; charset=utf-8");
-// Create connection
+  require_once 'config.php';
+
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
-	//mysqli_set_charset($conn, 'UTF8');
 
-	$ten = $_POST['hoten'];
+	$tenbenhnhan = $_POST['query'];
+  	if (isset($tenbenhnhan)) {
+      $sql = "SELECT * FROM benh_nhan WHERE ho_ten LIKE '$tenbenhnhan%'";
 
-	$benhnhan = "SELECT * FROM benh_nhan WHERE ho_ten='$ten'";
-	$result = $conn->query($benhnhan);
-
-	if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["ma_benh_nhan"]. " - Name: " . $row["ho_ten"]. " " . $row["dia_chi"]. " " . $row["chan_doan"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}	
-
-
-	mysqli_close($conn);
-
+      $result = $conn->query($sql);
+      if($result->num_rows > 0) {
+      	while ($row = $result->fetch_assoc()){
+      		echo '<tr>'. 
+      				'<td style="padding: 8px;width: 100px">' . $row['ho_ten'] . '</td>' .
+      				'<td style="padding: 8px;width: 150px;padding-left: 50px">' . $row['dia_chi'] . '</td>' .
+      				'<td style="padding: 8px;padding-left: 80px">' . $row['tuoi'] . '</td>' .
+      				'<td>' . '<form method="post" action="./php/timdonthuoc.php">' . '<input type="hidden" name="idbn" value="' . $row['ma_benh_nhan'] .'">' . '<button>Xem chi tiet</button></form>' . '</td>' .
+      			 '</tr>';
+      	}
+      }
+      else{
+      	echo '<p class="list-group-item border-1">No Record</p>';
+      }
+  	}
+  
 ?>

@@ -155,6 +155,7 @@
 	}
 
 	$conn->close();
+	header("location: ../khambenh.php");
 
 
 

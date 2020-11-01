@@ -46,6 +46,7 @@
   </script>
 
   <script src="./js/suggest.js"></script>
+  <script src="./js/findname.js"></script>
 </head>
 <body>
 
@@ -83,6 +84,7 @@
             <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
             <label style="margin-left: 50px">Tuổi</label>
             <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
+            <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px"><a herf="./timbenhnhan.php" style="text-decoration: none; color: white">Bệnh án cũ</a></button>
 
       <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
         
@@ -111,7 +113,7 @@
                 <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong1" required="" name="so_luong1" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang1" name="sang1" step="any" style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu1" name="chieu1" step="any" style="width: 10%">
@@ -123,7 +125,7 @@
                 <input type="text" id="thuoc2" name="thuoc2" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong2" name="so_luong2" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang2" name="sang2" step="any"style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu2" name="chieu2" step="any" style="width: 10%">
@@ -135,7 +137,7 @@
                 <input type="text" id="thuoc3" name="thuoc3" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong3" name="so_luong3" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang3" name="sang3" step="any" style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu3" name="chieu3" step="any" style="width: 10%">
@@ -147,7 +149,7 @@
                 <input type="text" id="thuoc4" name="thuoc4" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong4" name="so_luong4" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang4" name="sang4" step="any" style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu4" name="chieu4" step="any" style="width: 10%">
@@ -159,7 +161,7 @@
                 <input type="text" id="thuoc5" name="thuoc5" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong5" name="so_luong5" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang5" name="sang5" step="any" style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu5" name="chieu5" step="any" style="width: 10%">
@@ -171,7 +173,7 @@
                 <input type="text" id="thuoc6" name="thuoc6" style="width: 50%" autocomplete="off">
                 <label>Số lượng</label>
                 <input type="number" id="soluong6" name="so_luong6" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 50px">Sáng</label>
+                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
                 <input type="number" id="sang6" name="sang6" step="any" style="width: 10%">
                 <label>Chiều</label>
                 <input type="number" id="chieu6" name="chieu6" step="any" style="width: 10%">
@@ -251,6 +253,26 @@
   </form>
 </div>
 
+<div id="popup_timbenhan">
+  <div>
+      <h3 style="text-align: center;">Bệnh án cũ</h3>
+      <h4>Tìm theo tên :</h4><input type="text" id="tenbenhnhan" placeholder="Nhập họ tên"><br>
+      <table style="width: 100%; margin-top: 20px" border="1">
+        <tr>
+          <th style="text-align: center;">Họ tên</th>
+          <th style="text-align: center;">Địa chỉ</th>
+          <th style="text-align: center;">Tuổi</th>
+        </tr>
+      </table>
+      <table id="show-ten" style="margin-top: 20px">
+          
+      </table>
+
+      <button type="button" class="btn btn2" onclick="toggle1()" style="margin-left: 38%">Close</button>
+  </div>
+</div>
+
+
 <script type="text/javascript">
   var d = new Date();
   var nam = 1;
@@ -276,6 +298,13 @@
     var blur = document.getElementById("blur");
     blur.classList.toggle("active");
     var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+
+  }
+  function toggle1() {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup_timbenhan");
     popup.classList.toggle("active");
 
   }
