@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   // Send Search Text to the server
     $("#tenbenhnhan").keyup(function () {

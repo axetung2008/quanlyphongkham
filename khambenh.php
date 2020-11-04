@@ -46,7 +46,6 @@
   </script>
 
   <script src="./js/suggest.js"></script>
-  <script src="./js/findname.js"></script>
 </head>
 <body>
 
@@ -84,7 +83,7 @@
             <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
             <label style="margin-left: 50px">Tuổi</label>
             <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
-            <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px"><a herf="./timbenhnhan.php" style="text-decoration: none; color: white">Bệnh án cũ</a></button>
+            <a href="./quanlydonthuoc.php" target="_blank"><button type="button" class="btn btn3" style="width: 85%;margin-top: 270px">Bệnh án cũ</button></a>
 
       <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
         
