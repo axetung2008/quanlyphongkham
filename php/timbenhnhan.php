@@ -14,7 +14,7 @@
       				'<td style="padding: 8px;width: 100px">' . $row['ho_ten'] . '</td>' .
       				'<td style="width: 150px;">' . $row['dia_chi'] . '</td>' .
       				'<td style="padding-left: 10px">' . $row['tuoi'] . '</td>' .
-      				'<td>' . '<form method="post" action="./php/timdonthuoc.php">' . '<input type="hidden" name="idbn" value="' . $row['ma_benh_nhan'] .'">' . '<button style="background: #1abc9c;color: white">Chi tiet</button></form>' . '</td>' .
+      				'<td>' . '<form method="post" action="./timdonthuoc.php">' . '<input type="hidden" name="idbn" value="' . $row['ma_benh_nhan'] .'">' . '<button style="background: #1abc9c;color: white">Chi tiet</button></form>' . '</td>' .
       			 '</tr>';
       	}
       }

@@ -71,7 +71,7 @@
       <div style="margin-left: 20px">
         <form name="myForm" action="./php/thembenhnhan.php" method="post">
             <label>Họ tên:</label><br>
-            <input type="text" id="hoten" name="ho_ten" required="" style="width: 80%; height: 35px;"><br><br>
+            <input type="text" id="hoten" name="ho_ten" autocomplete="off" required="" style="width: 80%; height: 35px;"><br><br>
             <label>Địa chỉ:</label><br>
             <input type="text" id="diachi" name="dia_chi" required="" style="width: 80%; height: 35px;"><br>
             <label style="margin-top: 30px">Giới tính</label>
