@@ -23,16 +23,16 @@ $(document).ready(function () {
         $(document).on("click", "a", function () {
           if(tab[0] == 0 ){
             $("#thuoc1").val($(this).text());
-            $("#show-list").html("");        
+            $("#show-list").html(""); 
+            tab[0]++;       
           }
           else{
             $("#show-list").html(""); 
           }
+        tab[0]++;
         });
       });
 
-    $("#type2").click(function(){
-      tab[1] = 1;
       $("#thuoc2").keyup(function () {
 
         let searchText = $(this).val();
@@ -50,18 +50,17 @@ $(document).ready(function () {
         } else {
           $("#show-list").html("");
         }
-        if(tab[1]==1){
-          $(document).on("click", "a", function () {
+        $(document).on("click", "a", function () {
+          if(tab[1] == 0){
             $("#thuoc2").val($(this).text());
             $("#show-list").html("");
-          });
-        }
+            tab[1]++;
+          }else{
+            $("#show-list").html("");
+          }
+        });
       });
-      tab[1] = 0;
-    });
 
-    $("#type3").click(function(){
-      tab[2] = 1;
       $("#thuoc3").keyup(function () {
 
           let searchText = $(this).val();
@@ -79,20 +78,21 @@ $(document).ready(function () {
           } else {
             $("#show-list").html("");
           }
-          if(tab[2] == 1 ){
-            $(document).on("click", "a", function () {
+          $(document).on("click", "a", function () {
+            if(tab[2] == 0){
               $("#thuoc3").val($(this).text());
-              $("#show-list").html("");       
-            });
-          }
-        });
-      tab[2] = 0; 
-    }); 
+              $("#show-list").html("");
+              tab[2]++;       
+            }else{
+              $("#show-list").html("");
+            }
+          });
+      });
+
+ 
 
     $("#thuoc4").keyup(function () {
 
-
-      tab[3]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({
@@ -109,10 +109,10 @@ $(document).ready(function () {
         $("#show-list").html("");
       }
       $(document).on("click", "a", function () {
-        if(tab[3] != 0 ){
+        if(tab[3] == 0 ){
           $("#thuoc4").val($(this).text());
           $("#show-list").html("");
-          tab[3]--;         
+          tab[3]++;         
         }
         else{
           $("#show-list").html(""); 
@@ -122,8 +122,6 @@ $(document).ready(function () {
 
     $("#thuoc5").keyup(function () {
 
-    
-      tab[4]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({
@@ -140,10 +138,10 @@ $(document).ready(function () {
         $("#show-list").html("");
       }
       $(document).on("click", "a", function () {
-        if(tab[4] != 0 ){
+        if(tab[4] == 0 ){
           $("#thuoc5").val($(this).text());
           $("#show-list").html("");
-          tab[4]--;         
+          tab[4]++;         
         }
         else{
           $("#show-list").html(""); 
@@ -153,8 +151,6 @@ $(document).ready(function () {
 
     $("#thuoc6").keyup(function () {
 
-
-      tab[5]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({
@@ -171,10 +167,10 @@ $(document).ready(function () {
         $("#show-list").html("");
       }
       $(document).on("click", "a", function () {
-        if(tab[5] != 0 ){
+        if(tab[5] == 0 ){
           $("#thuoc6").val($(this).text());
           $("#show-list").html("");
-          tab[5]--;         
+          tab[5]++;         
         }
         else{
           $("#show-list").html(""); 
