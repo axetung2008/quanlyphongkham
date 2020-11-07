@@ -1,107 +1,98 @@
 var tab = [0,0,0,0,0,0];
 $(document).ready(function () {
   // Send Search Text to the server
-    $("#thuoc1").keyup(function () {
+      $("#thuoc1").keyup(function () {
 
-      if($("#thuoc1").parent().is("#tab1")){
-        tab[0]++;
-      }
-      let searchText = $(this).val();
-      if (searchText != "") {
-        $.ajax({
-          url: "./php/suggest.php",
-          method: "post",
-          data: {
-            query: searchText,
-          },
-          success: function (response) {
-            $("#show-list").html(response);
-          },
-        });
-      } else {
-        $("#show-list").html("");
-      }
-      $(document).on("click", "a", function () {
-        if(tab[0] != 0 ){
-          $("#thuoc1").val($(this).text());
+        let searchText = $(this).val();
+        if (searchText != "") {
+          $.ajax({
+            url: "./php/suggest.php",
+            method: "post",
+            data: {
+              query: searchText,
+            },
+            success: function (response) {
+              $("#show-list").html(response);
+            },
+          });
+
+        } else {
           $("#show-list").html("");
-          tab[0]--;         
         }
-        else{
-          $("#show-list").html(""); 
+
+        $(document).on("click", "a", function () {
+          if(tab[0] == 0 ){
+            $("#thuoc1").val($(this).text());
+            $("#show-list").html("");        
+          }
+          else{
+            $("#show-list").html(""); 
+          }
+        });
+      });
+
+    $("#type2").click(function(){
+      tab[1] = 1;
+      $("#thuoc2").keyup(function () {
+
+        let searchText = $(this).val();
+        if (searchText != "") {
+          $.ajax({
+            url: "./php/suggest.php",
+            method: "post",
+            data: {
+              query: searchText,
+            },
+            success: function (response) {
+              $("#show-list").html(response);
+            },
+          });
+        } else {
+          $("#show-list").html("");
+        }
+        if(tab[1]==1){
+          $(document).on("click", "a", function () {
+            $("#thuoc2").val($(this).text());
+            $("#show-list").html("");
+          });
         }
       });
+      tab[1] = 0;
     });
 
-    $("#thuoc2").keyup(function () {
+    $("#type3").click(function(){
+      tab[2] = 1;
+      $("#thuoc3").keyup(function () {
 
-      if($("#thuoc2").parent().is("#tab2")){
-        tab[1]++;
-      }
-      let searchText = $(this).val();
-      if (searchText != "") {
-        $.ajax({
-          url: "./php/suggest.php",
-          method: "post",
-          data: {
-            query: searchText,
-          },
-          success: function (response) {
-            $("#show-list").html(response);
-          },
+          let searchText = $(this).val();
+          if (searchText != "") {
+            $.ajax({
+              url: "./php/suggest.php",
+              method: "post",
+              data: {
+                query: searchText,
+              },
+              success: function (response) {
+                $("#show-list").html(response);
+              },
+            });
+          } else {
+            $("#show-list").html("");
+          }
+          if(tab[2] == 1 ){
+            $(document).on("click", "a", function () {
+              $("#thuoc3").val($(this).text());
+              $("#show-list").html("");       
+            });
+          }
         });
-      } else {
-        $("#show-list").html("");
-      }
-      $(document).on("click", "a", function () {
-        if(tab[1] != 0 ){
-          $("#thuoc2").val($(this).text());
-          $("#show-list").html("");
-          tab[1]--;         
-        }
-        else{
-          $("#show-list").html(""); 
-        }
-      });
-    });
-
-    $("#thuoc3").keyup(function () {
-
-      if($("#thuoc3").parent().is("#tab3")){
-        tab[2]++;
-      }
-      let searchText = $(this).val();
-      if (searchText != "") {
-        $.ajax({
-          url: "./php/suggest.php",
-          method: "post",
-          data: {
-            query: searchText,
-          },
-          success: function (response) {
-            $("#show-list").html(response);
-          },
-        });
-      } else {
-        $("#show-list").html("");
-      }
-      $(document).on("click", "a", function () {
-        if(tab[2] != 0 ){
-          $("#thuoc3").val($(this).text());
-          $("#show-list").html("");
-          tab[2]--;         
-        }
-        else{
-          $("#show-list").html(""); 
-        }
-      });
+      tab[2] = 0; 
     }); 
 
     $("#thuoc4").keyup(function () {
 
-      if($("#thuoc4").parent().is("#tab4")){
-        tab[3]++;
-      }
+
+      tab[3]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({
@@ -131,9 +122,8 @@ $(document).ready(function () {
 
     $("#thuoc5").keyup(function () {
 
-      if($("#thuoc5").parent().is("#tab5")){
-        tab[4]++;
-      }
+    
+      tab[4]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({
@@ -163,9 +153,8 @@ $(document).ready(function () {
 
     $("#thuoc6").keyup(function () {
 
-      if($("#thuoc6").parent().is("#tab6")){
-        tab[5]++;
-      }
+
+      tab[5]++;
       let searchText = $(this).val();
       if (searchText != "") {
         $.ajax({

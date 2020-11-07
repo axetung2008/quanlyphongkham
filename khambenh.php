@@ -46,6 +46,7 @@
   </script>
 
   <script src="./js/suggest.js"></script>
+
 </head>
 <body>
 
@@ -252,24 +253,6 @@
   </form>
 </div>
 
-<div id="popup_timbenhan">
-  <div>
-      <h3 style="text-align: center;">Bệnh án cũ</h3>
-      <h4>Tìm theo tên :</h4><input type="text" id="tenbenhnhan" placeholder="Nhập họ tên"><br>
-      <table style="width: 100%; margin-top: 20px" border="1">
-        <tr>
-          <th style="text-align: center;">Họ tên</th>
-          <th style="text-align: center;">Địa chỉ</th>
-          <th style="text-align: center;">Tuổi</th>
-        </tr>
-      </table>
-      <table id="show-ten" style="margin-top: 20px">
-          
-      </table>
-
-      <button type="button" class="btn btn2" onclick="toggle1()" style="margin-left: 38%">Close</button>
-  </div>
-</div>
 
 
 <script type="text/javascript">
@@ -298,14 +281,6 @@
     blur.classList.toggle("active");
     var popup = document.getElementById("popup");
     popup.classList.toggle("active");
-
-  }
-  function toggle1() {
-    var blur = document.getElementById("blur");
-    blur.classList.toggle("active");
-    var popup = document.getElementById("popup_timbenhan");
-    popup.classList.toggle("active");
-
   }
 
   function takeData(){
@@ -400,7 +375,7 @@
       //document.getElementById("print_chieu").innerHTML = chandoan;
   }
 
-  //tab
+  //tab====================================================
   var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
   var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
 

@@ -82,6 +82,7 @@
     });
   </script>
 
+  <script src="./js/suggest.js"></script>
 </head>
 <body>
 
@@ -131,12 +132,16 @@
 
      		<tr>
                 <?php 
+                	$chandoan;
                     while($row=mysqli_fetch_assoc($result_dt))
-                    {
+                  	{
+                  		$chandoan = $row['chan_doan'];
+                  		$madt = $row['ma_don_thuoc'];
+
                 ?>
                     <td> <?php echo $row['ngay_lap'] ?> </td>
                     <td> <?php echo $row['chi_phi'] ?> </td>
-                    <td><button>Xem</button></td>
+                    <td><button onclick="toggle()">Xem</button></td>
             </tr>
          		<?php 
                 	}
@@ -167,6 +172,8 @@
         ?>
      </div>
 </div>
+
+
 
   <!-- RIGHT -->
   <div style=" float: left;background: white; height: 800px;width: 50%;">
@@ -272,7 +279,87 @@
   </div>
 </div>
 
+<div id="popup">
+	<div class="print_area">
+		<h2 style="text-align: center;">Đơn thuốc</h2>
+      	<table>
+        <tr>
+          <th><h4>Họ tên: </h4></th>
+          <th style="padding-left: 30px"><h4><?php echo $hoten?></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Địa chỉ: </h4></th>
+          <th style="padding-left: 30px"><h4><?php echo $diachi?></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Giới tính: </h4></th>
+          <th style="padding-left: 30px"><h4><?php echo $gioitinh?></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Tuổi: </h4></th>
+          <th style="padding-left: 30px"><h4><?php echo $tuoi?></h4></th>
+        </tr>
+        <tr>
+          <th><h4>Chẩn đoán: </h4></th>
+          <th style="padding-left: 30px"><h4><?php echo $chandoan?></h4></th>
+        </tr>
+        <tr>
+          <th><h4>STT</h4></th>
+          <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
+          <th style="padding-left: 100px"><h4>Số lượng</h4></th>
+        </tr>
+        <tr>
+        <?php 
+        	$chitiet = "SELECT * FROM chi_tiet_don_thuoc WHERE ma_don_thuoc='$madt'";
+        	$result_chitiet = mysqli_query($conn,$chitiet);
+        	while($row=mysqli_fetch_assoc($result_chitiet))
+        	{
+        ?>
+        	<td><?php echo $row['ten_thuoc']?></td>
+        	<td><?php echo $row['so_luong']?></td>
+        	
+        </tr>
+        <?php
+        	}
+        ?>
 
+
+      </table>
+	</div>
+	
+	<button onclick="copy()">Sao chép</button>
+	<button onclick="toggle()">Close</button>
+</div>
+<script type="text/javascript">
+	function toggle() {
+	    var blur = document.getElementById("blur");
+	    blur.classList.toggle("active");
+	    var popup = document.getElementById("popup");
+	    popup.classList.toggle("active");
+	}
+	function copy(){
+
+		toggle();
+	}
+	//==============Tab================
+	var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
+  	var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
+
+  	function showPanel(panelIndex,colorCode) {
+    tabButtons.forEach(function(node){
+        node.style.backgroundColor="";
+        node.style.color="";
+    });
+	    tabButtons[panelIndex].style.backgroundColor=colorCode;
+	    tabButtons[panelIndex].style.color="white";
+	    tabPanels.forEach(function(node){
+        node.style.display="none";
+    });
+    tabPanels[panelIndex].style.display="block";
+    tabPanels[panelIndex].style.backgroundColor=colorCode;
+  	}
+  showPanel(0,'#6E6E6E');
+</script>
 
 </body>
 </html>
