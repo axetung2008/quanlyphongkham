@@ -1,12 +1,12 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['user'])){
-    header("location: login.html");
-    exit();
-  }
+session_start();
+if (!isset($_SESSION['user'])) {
+  header("location: login.html");
+  exit();
+}
 ?>
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
   <title>Khám bệnh</title>
   <meta charset="utf-8">
@@ -22,25 +22,25 @@
 
 
   <style type="text/css">
-    body{
+    body {
       background: #1abc9c;
     }
-    label{
+    label {
       font-size: 25px;
     }
-    input{
+    input {
       font-size: 25px;
 
     }
   </style>
 
   <script>
-    $(document).ready(function(){
-      $("#print").click(function(){
-        var mode='iframe';
-        var close=mode=="popup";
-        var options={mode:mode,popClose:close,popTitle:'Don thuoc'};
-        $("div.print_area").printArea(options);  
+    $(document).ready(function () {
+      $("#print").click(function () {
+        var mode = 'iframe';
+        var close = mode == "popup";
+        var options = {mode: mode, popClose: close, popTitle: 'Don thuoc'};
+        $("div.print_area").printArea(options);
       });
     });
   </script>
@@ -68,214 +68,161 @@
 
   <!-- LEFT -->
   <div style="float: left; background: white; height: 800px; width: 50%;">
-      <h1 style="text-align: center;">Thông tin bệnh nhân</h1>
-      <div style="margin-left: 20px">
-        <form name="myForm" action="./php/thembenhnhan.php" method="post">
-            <label>Họ tên:</label><br>
-            <input type="text" id="hoten" name="ho_ten" autocomplete="off" required="" style="width: 80%; height: 35px;"><br><br>
-            <label>Địa chỉ:</label><br>
-            <input type="text" id="diachi" name="dia_chi" required="" style="width: 80%; height: 35px;"><br>
-            <label style="margin-top: 30px">Giới tính</label>
-            <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px" onclick="male()">
-            <label>Nam</label>
-            <input type="radio" id="nu" name="gioi_tinh" value="nu" style="margin-left: 50px" onclick="female()">
-            <label>Nữ</label><br>
-            <label style="margin-top: 30px">Năm sinh</label>
-            <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
-            <label style="margin-left: 50px">Tuổi</label>
-            <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
-            <a href="./quanlydonthuoc.php" target="_blank"><button type="button" class="btn btn3" style="width: 85%;margin-top: 270px">Bệnh án cũ</button></a>
+    <h1 style="text-align: center;">Thông tin bệnh nhân</h1>
+    <div style="margin-left: 20px">
+      <form name="myForm" action="./php/thembenhnhan.php" method="post">
+        <label>Họ tên:</label><br>
+        <input type="text" id="hoten" name="ho_ten" autocomplete="off" required="" style="width: 80%; height: 35px;"><br><br>
+        <label>Địa chỉ:</label><br>
+        <input type="text" id="diachi" name="dia_chi" required="" style="width: 80%; height: 35px;"><br>
+        <label style="margin-top: 30px">Giới tính</label>
+        <input type="radio" id="nam" name="gioi_tinh" value="nam" checked="" style="margin-left: 50px" onclick="male()">
+        <label>Nam</label>
+        <input type="radio" id="nu" name="gioi_tinh" value="nu" style="margin-left: 50px" onclick="female()">
+        <label>Nữ</label><br>
+        <label style="margin-top: 30px">Năm sinh</label>
+        <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
+        <label style="margin-left: 50px">Tuổi</label>
+        <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
+        <a href="./quanlydonthuoc.php" target="_blank">
+          <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px">Bệnh án cũ</button>
+        </a>
 
-      <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
-        
-      </div>
+        <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
+
+    </div>
   </div>
 
   <!-- RIGHT -->
   <div style=" float: left;background: white; height: 800px;width: 50%;">
-      <h1 style="text-align: center;">Đơn thuốc</h1>
-      <div style="margin-left: 20px">
-            <label>Chẩn đoán</label><br>
-            <textarea id="chan_doan" name="chan_doan" required="" rows="2"  style="font-size: 20px;width: 90%"></textarea><br>
+    <h1 style="text-align: center;">Đơn thuốc</h1>
+    <div style="margin-left: 20px">
+      <label>Chẩn đoán</label><br>
+      <textarea id="chan_doan" name="chan_doan" required="" rows="2" style="font-size: 20px;width: 90%"></textarea><br>
 
-            <label>Điều trị</label>
-            <div class="tabContainer">
-              <div class="buttonContainer">
-                <button type="button" id="type1" onclick="showPanel(0,'#6E6E6E')">Loại 1</button>
-                <button type="button" id="type2" onclick="showPanel(1,'#6E6E6E')">Loại 2</button>
-                <button type="button" id="type3" onclick="showPanel(2,'#6E6E6E')">Loại 3</button>
-                <button type="button" id="type4" onclick="showPanel(3,'#6E6E6E')">Loại 4</button>
-                <button type="button" id="type5" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
-                <button type="button" id="type6" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
-              </div>
-              <div class="tabPanel" id="tab1">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong1" required="" name="so_luong1" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang1" name="sang1" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu1" name="chieu1" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi1" name="toi1" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab2">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc2" name="thuoc2" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong2" name="so_luong2" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang2" name="sang2" step="any"style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu2" name="chieu2" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi2" name="toi2" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab3">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc3" name="thuoc3" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong3" name="so_luong3" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang3" name="sang3" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu3" name="chieu3" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi3" name="toi3" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab4">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc4" name="thuoc4" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong4" name="so_luong4" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang4" name="sang4" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu4" name="chieu4" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi4" name="toi4" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab5">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc5" name="thuoc5" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong5" name="so_luong5" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang5" name="sang5" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu5" name="chieu5" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi5" name="toi5" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab6">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc6" name="thuoc6" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong6" name="so_luong6" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang6" name="sang6" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu6" name="chieu6" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi6" name="toi6" step="any" style="width: 10%">
-              </div>
-              <div class="suggest">
-                <div id="show-list">
-                  <!-- Gợi ý đơn thuốc -->
-                </div>
-              </div>
-            </div>
-            <label style="margin-top: 0px">Chi phí</label>
-            <input id="chiphi" type="" required="" name="chi_phi"><br><br>
+      <label>Điều trị</label>
+      <div class="tabContainer">
+        <div class="buttonContainer">
+          <?php
+          for($i = 1; $i<= 6; $i++){
+          ?>
+          <button class="tab-current" type="button" id="type<?php echo $i ?>" onclick="showPanel(<?php echo $i-1 ?>,'#6e6e6e')">Loại <?php echo $i ?></button>
+            <?php
+          }
+          ?>
+        </div>
 
 
-          <button type="button" class="btn btn3" onclick="toggle(),takeData()" style="width: 85%;">Xem đơn thuốc</button>
+        <?php
+            for($i = 1; $i<= 6; $i++){
+        ?>
+        <div class="tabPanel" id="tab<?php echo $i ?>">
+          <label>Tên thuốc</label>
+          <input type="text" id="thuoc<?php echo $i ?>" name="thuoc<?php echo $i ?>" style="width: 50%" autocomplete="off">
+          <label>Số lượng</label>
+          <input type="number" id="soluong<?php echo $i ?>" name="so_luong<?php echo $i ?>" step="any" style="width: 15%"><br>
+          <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
+          <input type="number" id="sang<?php echo $i ?>" name="sang<?php echo $i ?>" step="any" style="width: 10%">
+          <label>Chiều</label>
+          <input type="number" id="chieu<?php echo $i ?>" name="chieu<?php echo $i ?>" step="any" style="width: 10%">
+          <label>Tối</label>
+          <input type="number" id="toi<?php echo $i ?>" name="toi<?php echo $i ?>" step="any" style="width: 10%">
+        </div>
+        <?php
+          }
+        ?>
+        <div class="suggest">
+          <div id="show-list">
+            <!-- Gợi ý đơn thuốc -->
+          </div>
+        </div>
       </div>
+      <label style="margin-top: 0px">Chi phí</label>
+      <input id="chiphi" type="" required="" name="chi_phi"><br><br>
+
+
+      <button type="button" class="btn btn3" onclick="toggle(),takeData()" style="width: 85%;">Xem đơn thuốc</button>
+    </div>
   </div>
 </div>
 
 <div id="popup">
   <div class="print_area">
-      <h2 style="text-align: center;"> Đơn thuốc</h2>
-      <table>
-        <tr>
-          <th><h4>Họ tên: </h4></th>
-          <th style="padding-left: 30px"><h4 id="print_name"></h4></th>
-        </tr>
-        <tr>
-          <th><h4>Địa chỉ: </h4></th>
-          <th style="padding-left: 30px"><h4 id="print_diachi"></h4></th>
-        </tr>
-        <tr>
-          <th><h4>Giới tính: </h4></th>
-          <th style="padding-left: 30px"><h4 id="print_gioitinh"></h4></th>
-        </tr>
-        <tr>
-          <th><h4>Tuổi: </h4></th>
-          <th style="padding-left: 30px"><h4 id="print_tuoi"></h4></th>
-        </tr>
-        <tr>
-          <th><h4>Chẩn đoán: </h4></th>
-          <th style="padding-left: 30px"><h4 id="print_chandoan"></h4></th>
-        </tr>
-        <tr>
-          <th><h4>STT</h4></th>
-          <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
-          <th style="padding-left: 100px"><h4>Số lượng</h4></th>
-        </tr>
-        <tr id="dong1"></tr>
-        <tr id="cach1"></tr>
+    <h2 style="text-align: center;"> Đơn thuốc</h2>
+    <table>
+      <tr>
+        <th><h4>Họ tên: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_name"></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Địa chỉ: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_diachi"></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Giới tính: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_gioitinh"></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Tuổi: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_tuoi"></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Chẩn đoán: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_chandoan"></h4></th>
+      </tr>
+      <tr>
+        <th><h4>STT</h4></th>
+        <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
+        <th style="padding-left: 100px"><h4>Số lượng</h4></th>
+      </tr>
+      <?php
+        for($i = 1; $i<=6 ; $i++){
+      ?>
+      <tr id="dong<?php echo $i?>"></tr>
+      <tr id="cach<?php echo $i?>"></tr>
+      <?php
+        }
+      ?>
 
-        <tr id="dong2"></tr>
-        <tr id="cach2"></tr>
-
-        <tr id="dong3"></tr>
-        <tr id="cach3"></tr>
-
-        <tr id="dong4"></tr>
-        <tr id="cach4"></tr>
-
-        <tr id="dong5"></tr>
-        <tr id="cach5"></tr>
-
-        <tr id="dong6"></tr>
-        <tr id="cach6"></tr>
-      </table>
+    </table>
 
   </div>
 
-  <button type="submit" class="btn btn1">Lưu</button>
+
+  <input class="btn btn1" type="submit" name="submit" value="Lưu">
   <button class="btn btn1" type="button" id="print" onclick="name()">Print</button>
-  
-  
+
+
   <button type="button" class="btn btn2" onclick="toggle()">Close</button>
   </form>
 </div>
-
 
 
 <script type="text/javascript">
   var d = new Date();
   var nam = 1;
   var nu = 1;
-  function male(){
-      return nu = 0;
+
+  function male() {
+    return nu = 0;
   }
-  function female(){
-      return nam = 0;
+
+  function female() {
+    return nam = 0;
   }
-  
+
   function returnOlds() {
     var namsinh = document.getElementById("namsinh").value;
     var tuoi = document.getElementById("tuoi");
     tuoi.value = d.getFullYear() - namsinh;
   }
-  function returnYears(){
+
+  function returnYears() {
     var tuoi = document.getElementById("tuoi").value;
     var namsinh = document.getElementById("namsinh");
     namsinh.value = d.getFullYear() - tuoi;
   }
+
   function toggle() {
     var blur = document.getElementById("blur");
     blur.classList.toggle("active");
@@ -283,116 +230,103 @@
     popup.classList.toggle("active");
   }
 
-  function takeData(){
+  function takeData() {
     var diachi = document.getElementById("diachi").value;
     var name = document.getElementById("hoten").value;
     var tuoi = document.getElementById("tuoi").value;
     var chandoan = document.getElementById("chan_doan").value;
 
-      var thuoc = [];
-      thuoc.push(document.getElementById("thuoc1").value);
-      thuoc.push(document.getElementById("thuoc2").value);
-      thuoc.push(document.getElementById("thuoc3").value);
-      thuoc.push(document.getElementById("thuoc4").value);
-      thuoc.push(document.getElementById("thuoc5").value);
-      thuoc.push(document.getElementById("thuoc6").value);
+    var thuoc = [];
+    var soluong = [];
+    var sang = [];
+    var chieu = [];
+    var toi = [];
 
-      var soluong = [];
-      soluong.push(document.getElementById("soluong1").value);
-      soluong.push(document.getElementById("soluong2").value);
-      soluong.push(document.getElementById("soluong3").value);
-      soluong.push(document.getElementById("soluong4").value);
-      soluong.push(document.getElementById("soluong5").value);
-      soluong.push(document.getElementById("soluong6").value);
+    for(let i = 1; i<=6; i++){
+      thuoc.push(document.getElementById("thuoc" + i).value);
+      soluong.push(document.getElementById("soluong" + i).value);
+      sang.push(document.getElementById("sang" + i).value);
+      chieu.push(document.getElementById("chieu" + i).value);
+      toi.push(document.getElementById("toi" + i).value);
+    }
 
-      var sang = [];
-      sang.push(document.getElementById("sang1").value);
-      sang.push(document.getElementById("sang2").value);
-      sang.push(document.getElementById("sang3").value);
-      sang.push(document.getElementById("sang4").value);
-      sang.push(document.getElementById("sang5").value);
-      sang.push(document.getElementById("sang6").value);
+    var gioitinh = "nam";
+    if (nam == 1 && (nu == 0)) {
+      gioitinh = "nam";
+    }
+    if ((nam == 0) && (nu == 1)) {
+      gioitinh = "nu";
+    }
 
-      var chieu = [];
+    document.getElementById("print_name").innerHTML = name;
+    document.getElementById("print_diachi").innerHTML = diachi;
+    document.getElementById("print_gioitinh").innerHTML = gioitinh;
+    document.getElementById("print_tuoi").innerHTML = tuoi;
+    document.getElementById("print_chandoan").innerHTML = chandoan;
 
-      chieu.push(document.getElementById("chieu1").value);
-      chieu.push(document.getElementById("chieu2").value);
-      chieu.push(document.getElementById("chieu3").value);
-      chieu.push(document.getElementById("chieu4").value);
-      chieu.push(document.getElementById("chieu5").value);
-      chieu.push(document.getElementById("chieu6").value);
+    var dong = ["dong1", "dong2", "dong3", "dong4", "dong5", "dong6"];
+    var cachuong = ["cach1", "cach2", "cach3", "cach4", "cach5", "cach6"];
+    for (var i = 0; i < thuoc.length; i++) {
+      if (thuoc[i] != "") {
+        var print = "<tr>";
+        print += "<th>" + "<h4>" + (i + 1) + "</h4>" + "</th>";
+        print += '<th style="padding-left: 30px">' + "<h4>" + thuoc[i] + "</h4>" + "</th>";
+        print += '<th style="padding-left: 100px">' + "<h4>" + soluong[i] + " " + "viên" + "</h4>" + "</th>";
+        print += "</tr>";
+        document.getElementById(dong[i]).innerHTML = print;
+        var print_cach = "<tr>";
+        let count = 1;
+        print_cach += "<th>" + "Cách uống" + "</th>";
+        print_cach += '<th style="padding-left: 30px">';
 
-      var toi = [];
-      toi.push(document.getElementById("toi1").value);
-      toi.push(document.getElementById("toi2").value);
-      toi.push(document.getElementById("toi3").value);
-      toi.push(document.getElementById("toi4").value);
-      toi.push(document.getElementById("toi5").value);
-      toi.push(document.getElementById("toi6").value);
-
-      
-
-      var gioitinh = "nam";
-      if(nam == 1 && (nu == 0)){
-        gioitinh = "nam";
-      }
-      if((nam == 0) && (nu ==1)){
-        gioitinh = "nu";
-      }
-
-      document.getElementById("print_name").innerHTML = name;
-      document.getElementById("print_diachi").innerHTML = diachi;
-      document.getElementById("print_gioitinh").innerHTML = gioitinh;
-      document.getElementById("print_tuoi").innerHTML = tuoi;
-      document.getElementById("print_chandoan").innerHTML = chandoan;
-      
-      var dong = ["dong1","dong2","dong3","dong4","dong5","dong6"];
-      var cachuong = ["cach1","cach2","cach3","cach4","cach5","cach6"];
-      for (var i = 0; i < thuoc.length; i++){
-        if(thuoc[i] != ""){
-          var print = "<tr>";
-          print += "<th>" + "<h4>" + (i+1) + "</h4>" + "</th>";
-          print += '<th style="padding-left: 30px">' + "<h4>" + thuoc[i] + "</h4>" + "</th>";
-          print += '<th style="padding-left: 100px">' + "<h4>" + soluong[i] + " " + "viên" + "</h4>" + "</th>";
-          print += "</tr>";
-          document.getElementById(dong[i]).innerHTML = print;
-          var print_cach = "<tr>";
-          print_cach += "<th>" + "Cách uống" + "</th>";
-          if(sang[i] != "" && chieu[i] != "" && toi[i] != ""){
-            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"-"+" "+"Chiều"+" "+ chieu[i]+" "+"-"+"Tối"+" "+toi[i] + "</th>";
-          }else if(sang[i] != "" && chieu[i] != "" && toi[i]==""){
-            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"-"+" "+"Chiều"+" "+ chieu[i] + "</th>";
-          }else if(sang[i] != "" && chieu[i] == "" && toi[i]== ""){
-            print_cach += '<th style="padding-left: 30px">' + "Sáng"+" "+sang[i]+"</th>";
-          }else if(toi[i] != "" && chieu[i] == "" && sang[i] == ""){
-            print_cach += '<th style="padding-left: 30px">' + "Tối"+" "+toi[i] + "</th>";
-          }
-          print_cach += "</tr>";
-          document.getElementById(cachuong[i]).innerHTML = print_cach;
-
+        if(sang[i] != ""){
+          print_cach += "Sáng" + " " + sang[i];
+          count++;
         }
+
+        if(chieu[i] != ""){
+          if(count > 1){
+            print_cach += " - ";
+          }
+          print_cach += "Chiều" + " " + chieu[i];
+          count++;
+        }
+
+        if(toi[i] != ""){
+          if(count > 1){
+            print_cach += " - ";
+          }
+          print_cach += "Tối" + " " + toi[i];
+          count++;
+        }
+
+        print_cach += "</th>";
+        print_cach += "</tr>";
+        document.getElementById(cachuong[i]).innerHTML = print_cach;
       }
-      //document.getElementById("print_chieu").innerHTML = chandoan;
+    }
+    //document.getElementById("print_chieu").innerHTML = chandoan;
   }
 
   //tab====================================================
-  var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
-  var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
+  var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer button");
+  var tabPanels = document.querySelectorAll(".tabContainer  .tabPanel");
 
-  function showPanel(panelIndex,colorCode) {
-    tabButtons.forEach(function(node){
-        node.style.backgroundColor="";
-        node.style.color="";
+  function showPanel(panelIndex, colorCode) {
+    tabButtons.forEach(function (node) {
+      node.style.backgroundColor = "";
+      node.style.color = "";
     });
-    tabButtons[panelIndex].style.backgroundColor=colorCode;
-    tabButtons[panelIndex].style.color="white";
-    tabPanels.forEach(function(node){
-        node.style.display="none";
+    tabButtons[panelIndex].style.backgroundColor = colorCode;
+    tabButtons[panelIndex].style.color = "white";
+    tabPanels.forEach(function (node) {
+      node.style.display = "none";
     });
-    tabPanels[panelIndex].style.display="block";
-    tabPanels[panelIndex].style.backgroundColor=colorCode;
+    tabPanels[panelIndex].style.display = "block";
+    tabPanels[panelIndex].style.backgroundColor = colorCode;
   }
-  showPanel(0,'#6E6E6E');
+
+  showPanel(0, '#6e6e6e');
 
 
 </script>

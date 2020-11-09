@@ -185,85 +185,34 @@
             <label>Điều trị</label>
             <div class="tabContainer">
               <div class="buttonContainer">
-                <button type="button" id="type1" onclick="showPanel(0,'#6E6E6E')">Loại 1</button>
-                <button type="button" id="type2" onclick="showPanel(1,'#6E6E6E')">Loại 2</button>
-                <button type="button" id="type3" onclick="showPanel(2,'#6E6E6E')">Loại 3</button>
-                <button type="button" id="type4" onclick="showPanel(3,'#6E6E6E')">Loại 4</button>
-                <button type="button" id="type5" onclick="showPanel(4,'#6E6E6E')">Loại 5</button>
-                <button type="button" id="type6" onclick="showPanel(5,'#6E6E6E')">Loại 6</button>
+                <?php
+          			for($i = 1; $i<= 6; $i++){
+          		?>
+          			<button class="tab-current" type="button" id="type<?php echo $i ?>" onclick="showPanel(<?php echo $i-1 ?>,'#6e6e6e')">Loại <?php echo $i ?></button>
+            	<?php
+          			}
+          		?>
               </div>
-              <div class="tabPanel" id="tab1">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc1" name="thuoc1" required="" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong1" required="" name="so_luong1" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang1" name="sang1" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu1" name="chieu1" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi1" name="toi1" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab2">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc2" name="thuoc2" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong2" name="so_luong2" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang2" name="sang2" step="any"style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu2" name="chieu2" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi2" name="toi2" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab3">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc3" name="thuoc3" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong3" name="so_luong3" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang3" name="sang3" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu3" name="chieu3" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi3" name="toi3" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab4">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc4" name="thuoc4" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong4" name="so_luong4" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang4" name="sang4" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu4" name="chieu4" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi4" name="toi4" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab5">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc5" name="thuoc5" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong5" name="so_luong5" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang5" name="sang5" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu5" name="chieu5" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi5" name="toi5" step="any" style="width: 10%">
-              </div>
-              <div class="tabPanel" id="tab6">
-                <label>Tên thuốc</label>
-                <input type="text" id="thuoc6" name="thuoc6" style="width: 50%" autocomplete="off">
-                <label>Số lượng</label>
-                <input type="number" id="soluong6" name="so_luong6" step="any" style="width: 15%"><br>
-                <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-                <input type="number" id="sang6" name="sang6" step="any" style="width: 10%">
-                <label>Chiều</label>
-                <input type="number" id="chieu6" name="chieu6" step="any" style="width: 10%">
-                <label>Tối</label>
-                <input type="number" id="toi6" name="toi6" step="any" style="width: 10%">
-              </div>
+
+              <?php
+		            for($i = 1; $i<= 6; $i++){
+		        ?>
+		        <div class="tabPanel" id="tab<?php echo $i ?>">
+		          <label>Tên thuốc</label>
+		          <input type="text" id="thuoc<?php echo $i ?>" name="thuoc<?php echo $i ?>" style="width: 50%" autocomplete="off">
+		          <label>Số lượng</label>
+		          <input type="number" id="soluong<?php echo $i ?>" name="so_luong<?php echo $i ?>" step="any" style="width: 15%"><br>
+		          <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
+		          <input type="number" id="sang<?php echo $i ?>" name="sang<?php echo $i ?>" step="any" style="width: 10%">
+		          <label>Chiều</label>
+		          <input type="number" id="chieu<?php echo $i ?>" name="chieu<?php echo $i ?>" step="any" style="width: 10%">
+		          <label>Tối</label>
+		          <input type="number" id="toi<?php echo $i ?>" name="toi<?php echo $i ?>" step="any" style="width: 10%">
+		        </div>
+		      <?php
+		          	}
+		        ?>
+
               <div class="suggest">
                 <div id="show-list">
                   <!-- Gợi ý đơn thuốc -->
@@ -274,7 +223,7 @@
             <input id="chiphi" type="" required="" name="chi_phi"><br><br>
 
 
-          <button type="button" class="btn btn3" onclick="toggle(),takeData()" style="width: 85%;">Xem đơn thuốc</button>
+          <button type="button" class="btn btn3" onclick="toggle1()" style="width: 85%;">Xem đơn thuốc</button>
       </div>
   </div>
 </div>
@@ -301,7 +250,7 @@
         </tr>
         <tr>
           <th><h4>Chẩn đoán: </h4></th>
-          <th style="padding-left: 30px"><h4><?php echo $chandoan?></h4></th>
+          <th style="padding-left: 30px"><h4 id="chandoan"><?php echo $chandoan?></h4></th>
         </tr>
         <tr>
           <th><h4>STT</h4></th>
@@ -312,15 +261,56 @@
         <?php 
         	$chitiet = "SELECT * FROM chi_tiet_don_thuoc WHERE ma_don_thuoc='$madt'";
         	$result_chitiet = mysqli_query($conn,$chitiet);
+        	$i = 1;
+
         	while($row=mysqli_fetch_assoc($result_chitiet))
         	{
         ?>
-        	<td><?php echo $row['ten_thuoc']?></td>
-        	<td><?php echo $row['so_luong']?></td>
-        	
+        	<th><?php echo $i?></th>
+        	<th style="padding-left: 30px" id="tenthuoc<?php echo $i?>"><?php echo $row['ten_thuoc']?></th>
+        	<th style="padding-left: 100px" id="solg<?php echo $i?>"><?php echo $row['so_luong']?></th>
+        <tr>
+        	<th>Cách uống</th>
+        	<th style="padding-left: 30px">
+        		<?php
+        			$string = $row['cach_uong'];
+        			$pattern = "/[\/]/";
+        			$re = preg_split($pattern, $string);
+        			$cach = "";
+        			$count = 1;
+        			if($re[0] != ""){
+        				$cach = "Sáng"." ".$re[0];
+        				$count++;
+        			}
+        			if($re[1] != ""){
+        				if($count > 1){
+        					$cach = $cach . " - ";
+        				}
+        				$cach = $cach."Chiều"." ".$re[1];
+        				$count++;
+        			}
+        			if($re[2] != ""){
+        				if($count > 1){
+        					$cach = $cach . " - ";
+        				}
+        				$cach = $cach."Tối"." ".$re[2];
+        				$count++;
+        			}
+        			echo $cach;
+        			echo '<p hidden id="s' . $i . '">' . $re[0] . '</p>';
+        			echo '<p hidden id="c' . $i . '">' . $re[1] . '</p>';
+        			echo '<p hidden id="t' . $i . '">' . $re[2] . '</p>';
+
+        		?>
+        	</th>
+        </tr>
+        <?php
+        	$i++;
+        ?>
         </tr>
         <?php
         	}
+        	echo '<p hidden id="count">' . $i . '</p>';
         ?>
 
 
@@ -330,6 +320,8 @@
 	<button onclick="copy()">Sao chép</button>
 	<button onclick="toggle()">Close</button>
 </div>
+
+
 <script type="text/javascript">
 	function toggle() {
 	    var blur = document.getElementById("blur");
@@ -338,7 +330,19 @@
 	    popup.classList.toggle("active");
 	}
 	function copy(){
+		var chandoan = document.getElementById("chandoan").innerHTML;
+		document.getElementById("chan_doan").value = chandoan;
+		var count = document.getElementById("count").innerHTML;
+		for(let i = 1; i<count ; i++){
+			document.getElementById("thuoc" + i).value = document.getElementById("tenthuoc" + i).innerHTML;
+			document.getElementById("soluong" + i).value = document.getElementById("solg" + i).innerHTML;
+			document.getElementById("sang" + i).value = document.getElementById("s" + i).innerHTML;
+			document.getElementById("chieu" + i).value = document.getElementById("c" + i).innerHTML;
+			document.getElementById("toi" + i).value = document.getElementById("t" + i).innerHTML;
 
+		}
+
+		//console.log(count);
 		toggle();
 	}
 	//==============Tab================
