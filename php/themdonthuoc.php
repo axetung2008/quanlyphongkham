@@ -65,73 +65,73 @@
 	$donthuoc = "INSERT INTO don_thuoc(chan_doan,chi_phi,ma_benh_nhan) VALUES ('$chandoan','$chiphi','$ma_bn')";
 
 	$conn->query($donthuoc);
-	echo $ma_bn;
-//Lay id đơn thuốc của bệnh nhân đang khám
-// 	$id_dt = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$ma_bn' ORDER BY ngay_lap DESC LIMIT 1 ";
-// 	$ma_dt;
-// 	$res = $conn->query($id_dt);
-// 	if($res->num_rows > 0){
-// 		while ($row = $res->fetch_assoc()) {
-// 			$ma_dt = $row["ma_don_thuoc"];
-// 		}
-// 	}
-
-// 	//đánh số thứ tự cho những loại thuốc nhập vào
-// 	$c = 1;
-// 	for ($i=0; $i < 6; $i++) { 
-// 		if($thuoc[$i]!= ""){
-// 			$flag[$i] = $c;
-// 		}
-// 		$c++;
-// 	}
-// //những loại thuốc cùng cách uống sẽ có chung điểm flag
-// 	for ($i=0; $i < 6 ; $i++) {
-// 		for ($j=$i+1; $j <= 5; $j++) { 
-// 			if($dulieu[$i]==$dulieu[$j]){
-// 				$flag[$i] = $flag[$j];
-// 			}
-// 		}
-// 	}
 	
-// // //những loại thuốc chung điểm flag thì sẽ được gom lại
-// 	$tenthuoc = array();
-// 	$cach_uong = array();
-// 	$so_luong = array();
-// 	for ($i=0; $i < 6 ; $i++) { 
-// 		if($flag[$i] == 0){
-// 			continue;
-// 		}
-// 		$temp = $thuoc[$i];
-// 		for ($j=$i+1; $j <= 5; $j++) { 
-// 			if(($flag[$i] == $flag[$j]) && ($flag[$j] != 0)){
-// 				$temp = $temp . "/" . $thuoc[$j];
-// 				$flag[$j] = 0;
-// 			}
-// 		}
-// 		$flag[$i] = 0;
-// 		$u = $sang[$i+1] . "/" . $chieu[$i+1] . "/" . $toi[$i+1];
-// 		$sl = $soluong[$i+1];
-// 		array_push($tenthuoc, $temp);
-// 		array_push($cach_uong, $u);
-// 		array_push($so_luong, $sl);
-// 	}
+Lay id đơn thuốc của bệnh nhân đang khám
+	$id_dt = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$ma_bn' ORDER BY ngay_lap DESC LIMIT 1 ";
+	$ma_dt;
+	$res = $conn->query($id_dt);
+	if($res->num_rows > 0){
+		while ($row = $res->fetch_assoc()) {
+			$ma_dt = $row["ma_don_thuoc"];
+		}
+	}
 
-// 	$sum_thuoc = count($tenthuoc);
-// 	$sum_cach = count($cach_uong);
+	//đánh số thứ tự cho những loại thuốc nhập vào
+	$c = 1;
+	for ($i=0; $i < 6; $i++) { 
+		if($thuoc[$i]!= ""){
+			$flag[$i] = $c;
+		}
+		$c++;
+	}
+//những loại thuốc cùng cách uống sẽ có chung điểm flag
+	for ($i=0; $i < 6 ; $i++) {
+		for ($j=$i+1; $j <= 5; $j++) { 
+			if($dulieu[$i]==$dulieu[$j]){
+				$flag[$i] = $flag[$j];
+			}
+		}
+	}
+	
+// //những loại thuốc chung điểm flag thì sẽ được gom lại
+	$tenthuoc = array();
+	$cach_uong = array();
+	$so_luong = array();
+	for ($i=0; $i < 6 ; $i++) { 
+		if($flag[$i] == 0){
+			continue;
+		}
+		$temp = $thuoc[$i];
+		for ($j=$i+1; $j <= 5; $j++) { 
+			if(($flag[$i] == $flag[$j]) && ($flag[$j] != 0)){
+				$temp = $temp . "/" . $thuoc[$j];
+				$flag[$j] = 0;
+			}
+		}
+		$flag[$i] = 0;
+		$u = $sang[$i+1] . "/" . $chieu[$i+1] . "/" . $toi[$i+1];
+		$sl = $soluong[$i+1];
+		array_push($tenthuoc, $temp);
+		array_push($cach_uong, $u);
+		array_push($so_luong, $sl);
+	}
 
-// 	$t = 0;
-// 	while($sum_thuoc != 0){	
-// 		$thuoc = $tenthuoc[$t];
-// 		$cach = $cach_uong[$t];
-// 		$solg = $so_luong[$t];
-// 		$chitiet = "INSERT INTO chi_tiet_don_thuoc(ten_thuoc,ma_don_thuoc,cach_uong,so_luong) VALUES ('$thuoc','$ma_dt','$cach','$solg')";
-// 		$conn->query($chitiet);
-// 		$t++;
-// 		$sum_thuoc--;
+	$sum_thuoc = count($tenthuoc);
+	$sum_cach = count($cach_uong);
 
-// 	}
+	$t = 0;
+	while($sum_thuoc != 0){	
+		$thuoc = $tenthuoc[$t];
+		$cach = $cach_uong[$t];
+		$solg = $so_luong[$t];
+		$chitiet = "INSERT INTO chi_tiet_don_thuoc(ten_thuoc,ma_don_thuoc,cach_uong,so_luong) VALUES ('$thuoc','$ma_dt','$cach','$solg')";
+		$conn->query($chitiet);
+		$t++;
+		$sum_thuoc--;
+
+	}
 
 	$conn->close();
-//	header("location: ../quanlydonthuoc.php");
+	header("location: ../quanlydonthuoc.php");
 
 ?>
