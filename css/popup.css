@@ -23,12 +23,12 @@
 	transition: 0.5s;
 }
 
-#popup_timbenhan{
+#preview{
 	position: fixed;
 	top: 40%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	width: 1000px;
+	width: 600px;
 	padding: 50px;
 	box-shadow: 0 5px 30px rgba(0,0,0,.30);
 	background: #fff;
@@ -36,7 +36,7 @@
 	opacity: 0;
 	transition: 0.5s;
 }
-#popup_timbenhan.active{
+#preview.active{
 	top: 40%;
 	visibility: visible;
 	opacity: 1;

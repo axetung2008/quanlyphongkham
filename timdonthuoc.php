@@ -34,8 +34,8 @@
         $page = 1;
     }
 
-    $num_per_page = 05;
-    $start_from = ($page-1)*05;
+    $num_per_page = 07;
+    $start_from = ($page-1)*07;
     
     $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' limit $start_from,$num_per_page";
     $result_dt = mysqli_query($conn,$query);
@@ -79,7 +79,17 @@
         var options={mode:mode,popClose:close,popTitle:'Don thuoc'};
         $("div.print_area").printArea(options);  
       });
+      $("#print_button").click(function(){
+        var mode='iframe';
+        var close=mode=="popup";
+        var options={mode:mode,popClose:close,popTitle:'Don thuoc'};
+        $("div.print_area").printArea(options);  
+      });
     });
+
+
+
+
   </script>
 
   <script src="./js/suggest.js"></script>
@@ -115,6 +125,10 @@
 					<th style="font-size: 20px; padding-left: 20px"><?php echo $diachi?></th>
 				</tr>
 				<tr>
+					<th><label>Giới tính</label></th>
+					<th style="font-size: 20px; padding-left: 20px"><?php echo $gioitinh?></th>
+				</tr>
+				<tr>
 					<th><label>Tuổi</label></th>
 					<th style="font-size: 20px"><?php echo $tuoi?></th>
 				</tr>
@@ -135,16 +149,17 @@
                 	$chandoan;
                     while($row=mysqli_fetch_assoc($result_dt))
                   	{
+
                   		$chandoan = $row['chan_doan'];
                   		$madt = $row['ma_don_thuoc'];
 
                 ?>
                     <td> <?php echo $row['ngay_lap'] ?> </td>
                     <td> <?php echo $row['chi_phi'] ?> </td>
-                    <td><button onclick="toggle()">Xem</button></td>
+                    <td><button onclick="toggle(),takeID(<?php echo $madt?>)" class="dt">Xem</button></td>
             </tr>
          		<?php 
-                	}
+                	  }
                 ?>
 
      	</table>
@@ -179,57 +194,114 @@
   <div style=" float: left;background: white; height: 800px;width: 50%;">
       <h1 style="text-align: center;">Chi tiết đơn thuốc</h1>
       <div style="margin-left: 20px">
-            <label>Chẩn đoán</label><br>
-            <textarea id="chan_doan" name="chan_doan" required="" rows="2"  style="font-size: 20px;width: 90%"></textarea><br>
+      		
+      		<form name="donthuoc" action="./php/themdonthuoc.php" method="post">
+      			
+      			<input type="" name="id" hidden value="<?php echo $id?>">
+	            <label>Chẩn đoán</label><br>
+	            <textarea id="chan_doan" name="chan_doan" required="" rows="2"  style="font-size: 20px;width: 90%"></textarea><br>
 
-            <label>Điều trị</label>
-            <div class="tabContainer">
-              <div class="buttonContainer">
-                <?php
-          			for($i = 1; $i<= 6; $i++){
-          		?>
-          			<button class="tab-current" type="button" id="type<?php echo $i ?>" onclick="showPanel(<?php echo $i-1 ?>,'#6e6e6e')">Loại <?php echo $i ?></button>
-            	<?php
-          			}
-          		?>
-              </div>
+	            <label>Điều trị</label>
+	            <div class="tabContainer">
+	              <div class="buttonContainer">
+	                <?php
+	          			for($i = 1; $i<= 6; $i++){
+	          		?>
+	          			<button class="tab-current" type="button" id="type<?php echo $i ?>" onclick="showPanel(<?php echo $i-1 ?>,'#6e6e6e')">Loại <?php echo $i ?></button>
+	            	<?php
+	          			}
+	          		?>
+	              </div>
 
-              <?php
-		            for($i = 1; $i<= 6; $i++){
-		        ?>
-		        <div class="tabPanel" id="tab<?php echo $i ?>">
-		          <label>Tên thuốc</label>
-		          <input type="text" id="thuoc<?php echo $i ?>" name="thuoc<?php echo $i ?>" style="width: 50%" autocomplete="off">
-		          <label>Số lượng</label>
-		          <input type="number" id="soluong<?php echo $i ?>" name="so_luong<?php echo $i ?>" step="any" style="width: 15%"><br>
-		          <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
-		          <input type="number" id="sang<?php echo $i ?>" name="sang<?php echo $i ?>" step="any" style="width: 10%">
-		          <label>Chiều</label>
-		          <input type="number" id="chieu<?php echo $i ?>" name="chieu<?php echo $i ?>" step="any" style="width: 10%">
-		          <label>Tối</label>
-		          <input type="number" id="toi<?php echo $i ?>" name="toi<?php echo $i ?>" step="any" style="width: 10%">
-		        </div>
-		      <?php
-		          	}
-		        ?>
+	              <?php
+			            for($i = 1; $i<= 6; $i++){
+			        ?>
+			        <div class="tabPanel" id="tab<?php echo $i ?>">
+			          <label>Tên thuốc</label>
+			          <input type="text" id="thuoc<?php echo $i ?>" name="thuoc<?php echo $i ?>" style="width: 50%" autocomplete="off">
+			          <label>Số lượng</label>
+			          <input type="number" id="soluong<?php echo $i ?>" name="so_luong<?php echo $i ?>" step="any" style="width: 15%"><br>
+			          <label style="margin-top: 10px;margin-left: 60px">Sáng</label>
+			          <input type="number" id="sang<?php echo $i ?>" name="sang<?php echo $i ?>" step="any" style="width: 10%">
+			          <label>Chiều</label>
+			          <input type="number" id="chieu<?php echo $i ?>" name="chieu<?php echo $i ?>" step="any" style="width: 10%">
+			          <label>Tối</label>
+			          <input type="number" id="toi<?php echo $i ?>" name="toi<?php echo $i ?>" step="any" style="width: 10%">
+			        </div>
+			      <?php
+			          	}
+			        ?>
 
-              <div class="suggest">
-                <div id="show-list">
-                  <!-- Gợi ý đơn thuốc -->
-                </div>
-              </div>
-            </div>
-            <label style="margin-top: 0px">Chi phí</label>
-            <input id="chiphi" type="" required="" name="chi_phi"><br><br>
+	            <div class="suggest">
+	                <div id="show-list">
+	                  <!-- Gợi ý đơn thuốc -->
+	                </div>
+	              </div>
+	            </div>
+	            <label style="margin-top: 0px">Chi phí</label>
+	            <input id="chiphi" type="" required="" name="chi_phi"><br><br>
 
 
-          <button type="button" class="btn btn3" onclick="toggle1()" style="width: 85%;">Xem đơn thuốc</button>
+	          <button type="button" class="btn btn3" onclick="toggle1(),dataToPrint()" style="width: 85%;">Xem đơn thuốc</button>
       </div>
   </div>
 </div>
 
+
+
+<div id="preview">
+  <div class="print_area" id="xemdonthuoc">
+    <h2 style="text-align: center;"> Đơn thuốc</h2>
+    <table>
+      <tr>
+        <th><h4>Họ tên: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_name"><?php echo $hoten?></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Địa chỉ: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_diachi"><?php echo $diachi?></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Giới tính: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_gioitinh"><?php echo $gioitinh?></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Tuổi: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_tuoi"><?php echo $tuoi?></h4></th>
+      </tr>
+      <tr>
+        <th><h4>Chẩn đoán: </h4></th>
+        <th style="padding-left: 30px"><h4 id="print_chandoan"><?echo $chandoan?></h4></th>
+      </tr>
+      <tr>
+        <th><h4>STT</h4></th>
+        <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
+        <th style="padding-left: 100px"><h4>Số lượng</h4></th>
+      </tr>
+      <?php
+        for($i = 1; $i<=6 ; $i++){
+      ?>
+      <tr id="dong<?php echo $i?>"></tr>
+      <tr id="cach<?php echo $i?>"></tr>
+      <?php
+        }
+      ?>
+
+    </table>
+
+  </div>
+
+
+  <input class="btn btn1" type="submit" name="submit" value="Lưu">
+  <button class="btn btn1" type="button" id="print_button">Print</button>
+
+
+  <button type="button" class="btn btn2" onclick="toggle1()">Close</button>
+        </form>
+</div>
+
 <div id="popup">
-	<div class="print_area">
+	<div class="print_area" id="chitietdonthuoc">
 		<h2 style="text-align: center;">Đơn thuốc</h2>
       	<table>
         <tr>
@@ -258,7 +330,7 @@
           <th style="padding-left: 100px"><h4>Số lượng</h4></th>
         </tr>
         <tr>
-        <?php 
+        <?php
         	$chitiet = "SELECT * FROM chi_tiet_don_thuoc WHERE ma_don_thuoc='$madt'";
         	$result_chitiet = mysqli_query($conn,$chitiet);
         	$i = 1;
@@ -317,10 +389,11 @@
       </table>
 	</div>
 	
-	<button onclick="copy()">Sao chép</button>
-	<button onclick="toggle()">Close</button>
-</div>
+	<button class="btn btn1" type="button" onclick="copy()">Sao chép</button>
+	<button class="btn btn1" type="button" id="print">Print</button>
 
+	<button class="btn btn2" type="button" onclick="toggle()">Close</button>
+</div>
 
 <script type="text/javascript">
 	function toggle() {
@@ -328,6 +401,20 @@
 	    blur.classList.toggle("active");
 	    var popup = document.getElementById("popup");
 	    popup.classList.toggle("active");
+	    var hide = document.getElementById("xemdonthuoc");
+	    hide.classList.toggle("print_area");
+	}
+  function takeID(madt){
+      var id = madt;
+      document.getElementById("iddonthuoc").innerHTML = id;
+  }
+	function toggle1() {
+	    var blur = document.getElementById("blur");
+	    blur.classList.toggle("active");
+	    var popup = document.getElementById("preview");
+	    popup.classList.toggle("active");
+	    var hide = document.getElementById("chitietdonthuoc");
+	    hide.classList.toggle("print_area");
 	}
 	function copy(){
 		var chandoan = document.getElementById("chandoan").innerHTML;
@@ -344,6 +431,62 @@
 
 		//console.log(count);
 		toggle();
+	}
+	function dataToPrint(){
+		var thuoc = [];
+	    var soluong = [];
+	    var sang = [];
+	    var chieu = [];
+	    var toi = [];
+
+	    for(let i = 1; i<=6; i++){
+	      thuoc.push(document.getElementById("thuoc" + i).value);
+	      soluong.push(document.getElementById("soluong" + i).value);
+	      sang.push(document.getElementById("sang" + i).value);
+	      chieu.push(document.getElementById("chieu" + i).value);
+	      toi.push(document.getElementById("toi" + i).value);
+	    }
+	    var dong = ["dong1", "dong2", "dong3", "dong4", "dong5", "dong6"];
+    	var cachuong = ["cach1", "cach2", "cach3", "cach4", "cach5", "cach6"];
+    	for (var i = 0; i < thuoc.length; i++) {
+      	if (thuoc[i] != "") {
+        var print = "<tr>";
+        print += "<th>" + "<h4>" + (i + 1) + "</h4>" + "</th>";
+        print += '<th style="padding-left: 30px">' + "<h4>" + thuoc[i] + "</h4>" + "</th>";
+        print += '<th style="padding-left: 100px">' + "<h4>" + soluong[i] + " " + "viên" + "</h4>" + "</th>";
+        print += "</tr>";
+        document.getElementById(dong[i]).innerHTML = print;
+        var print_cach = "<tr>";
+        let count = 1;
+        print_cach += "<th>" + "Cách uống" + "</th>";
+        print_cach += '<th style="padding-left: 30px">';
+
+        if(sang[i] != ""){
+          print_cach += "Sáng" + " " + sang[i];
+          count++;
+        }
+
+        if(chieu[i] != ""){
+          if(count > 1){
+            print_cach += " - ";
+          }
+          print_cach += "Chiều" + " " + chieu[i];
+          count++;
+        }
+
+        if(toi[i] != ""){
+          if(count > 1){
+            print_cach += " - ";
+          }
+          print_cach += "Tối" + " " + toi[i];
+          count++;
+        }
+
+        print_cach += "</th>";
+        print_cach += "</tr>";
+        document.getElementById(cachuong[i]).innerHTML = print_cach;
+      }
+    }	
 	}
 	//==============Tab================
 	var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");

@@ -190,7 +190,7 @@ if (!isset($_SESSION['user'])) {
 
 
   <input class="btn btn1" type="submit" name="submit" value="Lưu">
-  <button class="btn btn1" type="button" id="print" onclick="name()">Print</button>
+  <button class="btn btn1" type="button" id="print">Print</button>
 
 
   <button type="button" class="btn btn2" onclick="toggle()">Close</button>
