@@ -286,14 +286,9 @@
         <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
         <th style="padding-left: 100px"><h4>Số lượng</h4></th>
       </tr>
-      <?php
-        for($i = 1; $i<=6 ; $i++){
-      ?>
-      <tr id="dong<?php echo $i?>"></tr>
-      <tr id="cach<?php echo $i?>"></tr>
-      <?php
-        }
-      ?>
+      <tr id="data">
+        
+      </tr>
 
     </table>
 
