@@ -86,11 +86,11 @@
         $("div.print_area").printArea(options);  
       });
 
+      var madonthuoc;
       $(".dt").on("click",function(){
-        let id = this.id;
-        console.log(id);
+        madonthuoc = this.id;
         $("#data").load("./php/load-chitiet.php", {
-            madonthuoc = id,
+            newid : madonthuoc
         });
       });
     });
@@ -338,7 +338,7 @@
           <th style="padding-left: 100px"><h4>Số lượng</h4></th>
         </tr>
         <tr id="data">
-
+          
       </table>
 	</div>
 	
@@ -369,22 +369,22 @@
 	    var hide = document.getElementById("chitietdonthuoc");
 	    hide.classList.toggle("print_area");
 	}
-	function copy(){
-		var chandoan = document.getElementById("chandoan").innerHTML;
-		document.getElementById("chan_doan").value = chandoan;
-		var count = document.getElementById("count").innerHTML;
-		for(let i = 1; i<count ; i++){
-			document.getElementById("thuoc" + i).value = document.getElementById("tenthuoc" + i).innerHTML;
-			document.getElementById("soluong" + i).value = document.getElementById("solg" + i).innerHTML;
-			document.getElementById("sang" + i).value = document.getElementById("s" + i).innerHTML;
-			document.getElementById("chieu" + i).value = document.getElementById("c" + i).innerHTML;
-			document.getElementById("toi" + i).value = document.getElementById("t" + i).innerHTML;
+	// function copy(){
+	// 	var chandoan = document.getElementById("chandoan").innerHTML;
+	// 	document.getElementById("chan_doan").value = chandoan;
+	// 	var count = document.getElementById("count").innerHTML;
+	// 	for(let i = 1; i<count ; i++){
+	// 		document.getElementById("thuoc" + i).value = document.getElementById("tenthuoc" + i).innerHTML;
+	// 		document.getElementById("soluong" + i).value = document.getElementById("solg" + i).innerHTML;
+	// 		document.getElementById("sang" + i).value = document.getElementById("s" + i).innerHTML;
+	// 		document.getElementById("chieu" + i).value = document.getElementById("c" + i).innerHTML;
+	// 		document.getElementById("toi" + i).value = document.getElementById("t" + i).innerHTML;
 
-		}
+	// 	}
 
-		//console.log(count);
-		toggle();
-	}
+	// 	//console.log(count);
+	// 	toggle();
+	// }
 	function dataToPrint(){
 		var thuoc = [];
 	    var soluong = [];
