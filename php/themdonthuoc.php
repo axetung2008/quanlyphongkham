@@ -66,7 +66,7 @@
 
 	$conn->query($donthuoc);
 	
-Lay id đơn thuốc của bệnh nhân đang khám
+//Lay id đơn thuốc của bệnh nhân đang khám
 	$id_dt = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$ma_bn' ORDER BY ngay_lap DESC LIMIT 1 ";
 	$ma_dt;
 	$res = $conn->query($id_dt);

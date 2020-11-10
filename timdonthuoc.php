@@ -85,6 +85,14 @@
         var options={mode:mode,popClose:close,popTitle:'Don thuoc'};
         $("div.print_area").printArea(options);  
       });
+
+      $(".dt").on("click",function(){
+        let id = this.id;
+        console.log(id);
+        $("#data").load("./php/load-chitiet.php", {
+            madonthuoc = id,
+        });
+      });
     });
 
 
@@ -156,7 +164,7 @@
                 ?>
                     <td> <?php echo $row['ngay_lap'] ?> </td>
                     <td> <?php echo $row['chi_phi'] ?> </td>
-                    <td><button onclick="toggle(),takeID(<?php echo $madt?>)" class="dt">Xem</button></td>
+                    <td><button onclick="toggle()" id="<?php echo $madt?>" class="dt">Xem</button></td>
             </tr>
          		<?php 
                 	  }
@@ -329,62 +337,7 @@
           <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
           <th style="padding-left: 100px"><h4>Số lượng</h4></th>
         </tr>
-        <tr>
-        <?php
-        	$chitiet = "SELECT * FROM chi_tiet_don_thuoc WHERE ma_don_thuoc='$madt'";
-        	$result_chitiet = mysqli_query($conn,$chitiet);
-        	$i = 1;
-
-        	while($row=mysqli_fetch_assoc($result_chitiet))
-        	{
-        ?>
-        	<th><?php echo $i?></th>
-        	<th style="padding-left: 30px" id="tenthuoc<?php echo $i?>"><?php echo $row['ten_thuoc']?></th>
-        	<th style="padding-left: 100px" id="solg<?php echo $i?>"><?php echo $row['so_luong']?></th>
-        <tr>
-        	<th>Cách uống</th>
-        	<th style="padding-left: 30px">
-        		<?php
-        			$string = $row['cach_uong'];
-        			$pattern = "/[\/]/";
-        			$re = preg_split($pattern, $string);
-        			$cach = "";
-        			$count = 1;
-        			if($re[0] != ""){
-        				$cach = "Sáng"." ".$re[0];
-        				$count++;
-        			}
-        			if($re[1] != ""){
-        				if($count > 1){
-        					$cach = $cach . " - ";
-        				}
-        				$cach = $cach."Chiều"." ".$re[1];
-        				$count++;
-        			}
-        			if($re[2] != ""){
-        				if($count > 1){
-        					$cach = $cach . " - ";
-        				}
-        				$cach = $cach."Tối"." ".$re[2];
-        				$count++;
-        			}
-        			echo $cach;
-        			echo '<p hidden id="s' . $i . '">' . $re[0] . '</p>';
-        			echo '<p hidden id="c' . $i . '">' . $re[1] . '</p>';
-        			echo '<p hidden id="t' . $i . '">' . $re[2] . '</p>';
-
-        		?>
-        	</th>
-        </tr>
-        <?php
-        	$i++;
-        ?>
-        </tr>
-        <?php
-        	}
-        	echo '<p hidden id="count">' . $i . '</p>';
-        ?>
-
+        <tr id="data">
 
       </table>
 	</div>
@@ -404,10 +357,10 @@
 	    var hide = document.getElementById("xemdonthuoc");
 	    hide.classList.toggle("print_area");
 	}
-  function takeID(madt){
-      var id = madt;
-      document.getElementById("iddonthuoc").innerHTML = id;
-  }
+  // function takeID(madt){
+  //     var id = madt;
+  //     document.getElementById("iddonthuoc").innerHTML = id;
+  // }
 	function toggle1() {
 	    var blur = document.getElementById("blur");
 	    blur.classList.toggle("active");
