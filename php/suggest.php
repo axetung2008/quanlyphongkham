@@ -10,7 +10,7 @@
       $result = $conn->query($sql);
       if($result->num_rows > 0) {
       	while ($row = $result->fetch_assoc()){
-      		echo '<a href="#" class="list-group-item list-group-item-action border-1">' . $row['ten_thuoc'] . '</a>';
+      		echo '<a href="javascript:void(0)" class="list-group-item list-group-item-action border-1">' . $row['ten_thuoc'] . '</a>';
       	}
       }
 
