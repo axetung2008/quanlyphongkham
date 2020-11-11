@@ -80,9 +80,9 @@ if (!isset($_SESSION['user'])) {
         <label>Nam</label>
         <input type="radio" id="nu" name="gioi_tinh" value="nu" style="margin-left: 50px" onclick="female()">
         <label>Nữ</label><br>
-        <label style="margin-top: 30px">Năm sinh</label>
+        <label style="margin-top: 30px">Năm sinh:</label>
         <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
-        <label style="margin-left: 50px">Tuổi</label>
+        <label style="margin-left: 50px">Tuổi:</label>
         <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
         <a href="./quanlydonthuoc.php" target="_blank">
           <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px">Bệnh án cũ</button>
