@@ -37,7 +37,7 @@
     $num_per_page = 07;
     $start_from = ($page-1)*07;
     
-    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC limit $start_from,$num_per_page ";
+    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC limit $start_from,$num_per_page";
     $result_dt = mysqli_query($conn,$query);
 
 ?>
@@ -145,14 +145,16 @@
 
      <h1 style="text-align: center;">Đơn thuốc</h1>
      <div style="margin-left: 20px">
-     	<table style="width: 100%">
-     		<tr>
-     			<th><label>Ngày khám</label></th>
-     			<th><label>Chi phí</label></th>
-     			<th><label>Chi tiết</label></th>
-     		</tr>
+     	<table style="width: 100%" id="mytable">
+        <thead>
+       		<tr>
+       			<th><label>Ngày khám</label></th>
+       			<th><label>Chi phí</label></th>
+       			<th><label>Chi tiết</label></th>
+       		</tr>
+        </thead>
 
-     		<tr>
+        <tbody>
                 <?php 
                 	$chandoan;
                     while($row=mysqli_fetch_assoc($result_dt))
@@ -162,37 +164,71 @@
                   		$madt = $row['ma_don_thuoc'];
 
                 ?>
-                    <td> <?php echo $row['ngay_lap'] ?> </td>
-                    <td> <?php echo $row['chi_phi'] ?> </td>
-                    <td><button onclick="toggle()" id="<?php echo $madt?>" class="dt">Xem</button></td>
-            </tr>
-         		<?php 
+                    <tr>
+                    <td style="padding: 5px"> <?php echo $row['ngay_lap'] ?> </td>
+                    <td style="padding: 5px"> <?php echo $row['chi_phi'] ?> </td>
+                    <td style="padding: 5px"><button onclick="toggle()" id="<?php echo $madt?>" class="dt">Xem</button></td>
+                    </tr>
+         		    <?php 
                 	  }
                 ?>
-
+          
+        </tbody>
      	</table>
-     	<?php 
-        
-                $pr_query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC";
-                $pr_result = mysqli_query($conn,$pr_query);
-                $total_record = mysqli_num_rows($pr_result);
-                
-                $total_page = ceil($total_record/$num_per_page);
-                
-                if($page>1){
-                    echo "<a href='index.php?page=".($page-1)."' class='btn btn-danger'>Previous</a>";
-                }
+     <div class="pagination-container">
+        <nav>
+          <ul class="pagination"></ul>
+        </nav>     
+     </div>
 
-                
-                for($i=1;$i<$total_page;$i++){
-                    echo "<a href='index.php?page=".$i."' class='btn btn-primary'>$i</a>";
-                }
+     <script type="text/javascript">
+       var table = '#mytable'
+       var trnum = 0
+       var maxRows = 5
+       var totalRows = $(table+' tbody tr').length
+       //console.log(totalRows)
+       $(table+' tbody tr:gt(0)').each(function(){
+          trnum++
+          if(trnum > maxRows){
+            $(this).hide()
+          }
+          if(trnum <= maxRows){
+            $(this).show()
+          }
+       })
+       if(totalRows > maxRows){
+          var pagenum = Math.ceil(totalRows/maxRows)
+          for(var i=1;i<=pagenum;){
+            $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+          }
+       }
+       $('.pagination li:first-child').addClass('active')
+       $('.pagination li').on('click',function(){
+          var pagenum = $(this).attr('data-page')
+          var trindex = 0;
+          $('.pagination li').removeClass('active')
+          $(this).addClass('active')
+          $(table+' tr:gt(0)').each(function(){
+              trindex++
+              if(trindex > (maxRows*pagenum) || trindex <= ((maxRows*pagenum)-maxRows)){
+                $(this).hide()
+              }else{
+                $(this).show()
+              }
+          })
+       })
+       $(function(){
+          $('table thead tr:eq(0)').prepend('<th><label>STT<label></th>')
+          var id = 0;
+          $('table tbody tr:gt(3)').each(function() {
+            id++
+            $(this).prepend('<td>'+id+'</td>')
+          })
+       })
 
-                if($i>$page){
-                    echo "<a href='index.php?page=".($page+1)."' class='btn btn-danger'>Next</a>";
-                }
-        
-        ?>
+
+     </script>
+
      </div>
 </div>
 
