@@ -15,7 +15,7 @@
 	require_once('./php/config.php');
 
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
-
+  mysqli_set_charset($conn,"utf8");
 	$sql = "SELECT * FROM benh_nhan WHERE ma_benh_nhan='$id'";
 	$result = $conn->query($sql);
 	if($result->num_rows > 0){
@@ -37,7 +37,7 @@
     $num_per_page = 07;
     $start_from = ($page-1)*07;
     
-    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' limit $start_from,$num_per_page";
+    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC limit $start_from,$num_per_page ";
     $result_dt = mysqli_query($conn,$query);
 
 ?>
@@ -133,12 +133,12 @@
 					<th style="font-size: 20px; padding-left: 20px"><?php echo $diachi?></th>
 				</tr>
 				<tr>
-					<th><label>Giới tính</label></th>
+					<th><label>Giới tính:</label></th>
 					<th style="font-size: 20px; padding-left: 20px"><?php echo $gioitinh?></th>
 				</tr>
 				<tr>
-					<th><label>Tuổi</label></th>
-					<th style="font-size: 20px"><?php echo $tuoi?></th>
+					<th><label>Tuổi:</label></th>
+					<th style="font-size: 20px; padding-left: 20px"><?php echo $tuoi?></th>
 				</tr>
 			</table>  
      </div>
@@ -173,7 +173,7 @@
      	</table>
      	<?php 
         
-                $pr_query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id'";
+                $pr_query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC";
                 $pr_result = mysqli_query($conn,$pr_query);
                 $total_record = mysqli_num_rows($pr_result);
                 
@@ -286,9 +286,14 @@
         <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
         <th style="padding-left: 100px"><h4>Số lượng</h4></th>
       </tr>
-      <tr id="data">
-        
-      </tr>
+      <?php
+        for($i = 1; $i<=6 ; $i++){
+      ?>
+      <tr id="dong<?php echo $i?>"></tr>
+      <tr id="cach<?php echo $i?>"></tr>
+      <?php
+        }
+      ?>
 
     </table>
 
@@ -332,7 +337,9 @@
           <th style="padding-left: 80px"><h4>Tên thuốc</h4></th>
           <th style="padding-left: 100px"><h4>Số lượng</h4></th>
         </tr>
-        <tr id="data">
+        <tbody id="data">
+          
+        </tbody>
           
       </table>
 	</div>
@@ -364,22 +371,23 @@
 	    var hide = document.getElementById("chitietdonthuoc");
 	    hide.classList.toggle("print_area");
 	}
-	// function copy(){
-	// 	var chandoan = document.getElementById("chandoan").innerHTML;
-	// 	document.getElementById("chan_doan").value = chandoan;
-	// 	var count = document.getElementById("count").innerHTML;
-	// 	for(let i = 1; i<count ; i++){
-	// 		document.getElementById("thuoc" + i).value = document.getElementById("tenthuoc" + i).innerHTML;
-	// 		document.getElementById("soluong" + i).value = document.getElementById("solg" + i).innerHTML;
-	// 		document.getElementById("sang" + i).value = document.getElementById("s" + i).innerHTML;
-	// 		document.getElementById("chieu" + i).value = document.getElementById("c" + i).innerHTML;
-	// 		document.getElementById("toi" + i).value = document.getElementById("t" + i).innerHTML;
+	function copy(){
+		var chandoan = document.getElementById("chandoan").innerHTML;
+		document.getElementById("chan_doan").value = chandoan;
+		var count = document.getElementById("count").innerHTML;
+    //console.log(count);
+		for(let i = 1; i<count ; i++){
+			document.getElementById("thuoc" + i).value = document.getElementById("tenthuoc" + i).innerHTML;
+			document.getElementById("soluong" + i).value = document.getElementById("solg" + i).innerHTML;
+			document.getElementById("sang" + i).value = document.getElementById("s" + i).innerHTML;
+			document.getElementById("chieu" + i).value = document.getElementById("c" + i).innerHTML;
+			document.getElementById("toi" + i).value = document.getElementById("t" + i).innerHTML;
 
-	// 	}
+		}
 
-	// 	//console.log(count);
-	// 	toggle();
-	// }
+		//console.log(count);
+		toggle();
+	}
 	function dataToPrint(){
 		var thuoc = [];
 	    var soluong = [];
