@@ -69,6 +69,9 @@
       font-size: 25px;
 
     }
+    #mytable tr:nth-child(even){
+      background-color: #dddddd
+    }
   </style>
 
   <script>
@@ -218,11 +221,11 @@
           })
        })
        $(function(){
-          $('table thead tr:eq(0)').prepend('<th><label>STT<label></th>')
+          $('table thead tr:eq(0)').prepend('<th><label>STT</label></th>')
           var id = 0;
           $('table tbody tr:gt(3)').each(function() {
             id++
-            $(this).prepend('<td>'+id+'</td>')
+            $(this).prepend('<td style="text-align:center;padding-left: 0px;width:10%">'+id+'</td>')
           })
        })
 
