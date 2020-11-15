@@ -33,8 +33,8 @@
 			<div class="card">
 				<div class="face face1">
 						<div class="content">
-							<img src="./img/document.png">
-							<h3>Bệnh án</h3>
+							<img src="./img/drugs.png">
+							<h3>Tủ thuốc</h3>
 						</div>					
 				</div>
 				<div class="face face2">
@@ -53,6 +53,7 @@
 				</div>
 			</div>		
 		</a>
+		
 	</div>
 
 
