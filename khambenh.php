@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])) {
   header("location: login.html");
   exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

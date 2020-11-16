@@ -1,9 +1,14 @@
 <?php
+  require_once('./php/config.php');
   session_start();
   if(!isset($_SESSION['user'])){
     header("location: login.html");
     exit();
   }
+
+  $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+  mysqli_set_charset($conn,"utf8");
+    
 ?>
 
 <!DOCTYPE html>
@@ -66,13 +71,67 @@
       <div style="width: 100%;padding-left: 35%; padding-top: 50px">
         <table style="width: 50%" id="mytable">
           <thead style="font-size: 20px">
+            <th width="20%">Mã thuốc</th>
             <th width="50%">Tên thuốc</th>
 
           </thead>
           <tbody id="show-tenthuoc" style="font-size: 18px">
+
           </tbody>
         </table>
+      <div class="pagination-container">
+        <nav>
+          <ul class="pagination"></ul>
+        </nav>     
+     </div>
 
+     <script type="text/javascript">
+       var table = '#mytable'
+       var trnum = 0
+       var maxRows = 7
+       var totalRows = $(table+' tbody tr').length
+       console.log(totalRows)
+       // $(table+' tbody tr:gt(0)').each(function(){
+       //    trnum++
+       //    if(trnum > maxRows){
+       //      $(this).hide()
+       //    }
+       //    if(trnum <= maxRows){
+       //      $(this).show()
+       //    }
+       // })
+       // if(totalRows > maxRows){
+       //    var pagenum = Math.ceil(totalRows/maxRows)
+       //    for(var i=1;i<=pagenum;){
+       //      $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+       //    }
+       // }
+       // $('.pagination li:first-child').addClass('active')
+       // $('.pagination li').on('click',function(){
+       //    var pagenum = $(this).attr('data-page')
+       //    var trindex = 0;
+       //    $('.pagination li').removeClass('active')
+       //    $(this).addClass('active')
+       //    $(table+' tr:gt(0)').each(function(){
+       //        trindex++
+       //        if(trindex > (maxRows*pagenum) || trindex <= ((maxRows*pagenum)-maxRows)){
+       //          $(this).hide()
+       //        }else{
+       //          $(this).show()
+       //        }
+       //    })
+       // })
+       // $(function(){
+       //    $('table thead tr:eq(0)').prepend('<th><label>STT</label></th>')
+       //    var id = 0;
+       //    $('#mytable tbody tr').each(function() {
+       //      id++
+       //      $(this).prepend('<td style="text-align:center;padding-left: 0px;width:5%">'+id+'</td>')
+       //    })
+       // })
+
+
+     </script>
       </div>
   </div>
 

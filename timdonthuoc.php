@@ -27,17 +27,9 @@
 		}
 	}
 
-	if(isset($_GET['page'])) {
-        $page = $_GET['page'];
-    }
-    else{
-        $page = 1;
-    }
 
-    $num_per_page = 07;
-    $start_from = ($page-1)*07;
     
-    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC limit $start_from,$num_per_page";
+    $query = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$id' ORDER BY ngay_lap DESC";
     $result_dt = mysqli_query($conn,$query);
 
 ?>
