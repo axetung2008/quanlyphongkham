@@ -147,11 +147,11 @@
      </div>
 
      <h1 style="text-align: center;">Đơn thuốc</h1>
-     <div style="margin-left: 20px">
+     <div style="margin-left: 10px">
      	<table style="width: 100%" id="mytable">
         <thead>
        		<tr>
-       			<th><label>Ngày khám</label></th>
+       			<th style="padding-left: 20px"><label>Ngày khám</label></th>
        			<th><label>Chi phí</label></th>
        			<th><label>Chi tiết</label></th>
        		</tr>
@@ -168,7 +168,7 @@
 
                 ?>
                     <tr>
-                    <td style="padding: 5px"> <?php echo $row['ngay_lap'] ?> </td>
+                    <td style="padding: 5px;padding-left: 20px"> <?php echo $row['ngay_lap'] ?> </td>
                     <td style="padding: 5px"> <?php echo $row['chi_phi'] ?> </td>
                     <td style="padding: 5px"><button onclick="toggle()" id="<?php echo $madt?>" class="dt">Xem</button></td>
                     </tr>
@@ -225,7 +225,7 @@
           var id = 0;
           $('#mytable tbody tr').each(function() {
             id++
-            $(this).prepend('<td style="text-align:center;padding-left: 0px;width:10%">'+id+'</td>')
+            $(this).prepend('<td style="text-align:center;padding-left: 0px;width:5%">'+id+'</td>')
           })
        })
 

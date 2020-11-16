@@ -29,7 +29,7 @@
 				</div>
 			</div>		
 		</a>
-		<a href="">
+		<a href="quanlythuoc.php">
 			<div class="card">
 				<div class="face face1">
 						<div class="content">
