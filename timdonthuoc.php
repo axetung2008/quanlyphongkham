@@ -327,7 +327,12 @@
       ?>
 
     </table>
-
+    <table>
+      <tr>
+        <td><h4><b>Không lấy đơn thuốc</b></h4></td>
+        <td style="padding-left: 20px"><input type="checkbox" name="trang_thai" value="0"></td>
+      </tr>
+    </table>
   </div>
 
 

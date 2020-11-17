@@ -61,6 +61,8 @@
 	$flag[4]= 0;
 	$flag[5]= 0;
 
+	$trangthai = $_POST['trang_thai'];
+
 	//Luu don thuoc
 	$donthuoc = "INSERT INTO don_thuoc(chan_doan,chi_phi,ma_benh_nhan) VALUES ('$chandoan','$chiphi','$ma_bn')";
 
@@ -130,8 +132,12 @@
 		$sum_thuoc--;
 
 	}
+	if($trangthai == "") $trangthai = 1;
+	$tt = "INSERT INTO xu_ly_don_thuoc(ma_don_thuoc,trang_thai) VALUES ('$ma_dt','$trangthai')";
+	$conn->query($tt);
+
 
 	$conn->close();
-	header("location: ../quanlydonthuoc.php");
+	header("location: ../timbenhnhan.php");
 
 ?>
