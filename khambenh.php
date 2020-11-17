@@ -85,9 +85,10 @@ if (!isset($_SESSION['user'])) {
         <input type="" name="nam_sinh" id="namsinh" style="width: 200px" onchange="returnOlds()">
         <label style="margin-left: 50px">Tuổi:</label>
         <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
-        <a href="./timbenhnhan.php" target="_blank">
-          <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px">Bệnh án cũ</button>
-        </a>
+        
+        <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px" onclick="location.href='./timbenhnhan.php';">Bệnh án cũ</button>
+
+        
 
         <!-- <iframe src="./timbenhnhan.html" style="height: 200px; width: 600px"></iframe> -->
 
