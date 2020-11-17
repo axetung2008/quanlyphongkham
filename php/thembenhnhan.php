@@ -66,6 +66,7 @@
 	$flag[4]= 0;
 	$flag[5]= 0;
 
+	$trangthai = $_POST['trang_thai'];
 
 //Them thong tin benh nhan 
 	$sql = "INSERT INTO benh_nhan(ho_ten,dia_chi,gioi_tinh,tuoi) VALUES ('$hoten','$diachi','$gioitinh','$tuoi')";
@@ -87,7 +88,7 @@
 
 	$conn->query($donthuoc);
 
-//Lay id đơn thuốc của bệnh nhân đang khám
+//Lay mã đơn thuốc của bệnh nhân đang khám
 	$id_dt = "SELECT * FROM don_thuoc WHERE ma_benh_nhan='$ma_bn' ORDER BY ngay_lap DESC LIMIT 1 ";
 	$ma_dt;
 	$res = $conn->query($id_dt);
@@ -153,6 +154,11 @@
 		$sum_thuoc--;
 
 	}
+
+//Cập nhật trạng thái cho đơn thuốc
+	if($trangthai == "") $trangthai = 1;
+	$tt = "INSERT INTO xu_ly_don_thuoc(ma_don_thuoc,trang_thai) VALUES ('$ma_dt','$trangthai')";
+	$conn->query($tt);
 
 	$conn->close();
 	header("location: ../khambenh.php");
