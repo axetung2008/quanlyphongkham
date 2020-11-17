@@ -47,10 +47,10 @@
 
 <div class="container">
   <br />
-  <form class="form-inline">
+  <form class="form-inline" action="./php/themthuoc.php" method="post">
   <div class="form-group mx-sm-3 mb-2">
     <label>Nhập tên thuốc mới: </label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" name="ten_thuoc" autocomplete="off">
   </div>
   <button type="submit" class="btn btn-primary mb-2">Lưu</button>
 </form>
