@@ -41,6 +41,18 @@
 				</div>
 			</div>	
 		</a>
+		<a href="toathuoc.php">
+			<div class="card">
+				<div class="face face1">
+						<div class="content">
+							<img src="./img/paper.png">
+							<h3>Toa thuốc</h3>
+						</div>					
+				</div>
+				<div class="face face2">
+				</div>
+			</div>		
+		</a>
 		<a href="./php/logout.php">
 			<div class="card">
 				<div class="face face1">

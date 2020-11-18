@@ -59,7 +59,7 @@ if (!isset($_SESSION['user'])) {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="chucnang.php">Quản lý</a></li>
+        <li><a href="./chucnang.php">Quản lý</a></li>
       </ul>
     </div>
   </div>
@@ -86,7 +86,7 @@ if (!isset($_SESSION['user'])) {
         <label style="margin-left: 50px">Tuổi:</label>
         <input type="" name="tuoi" id="tuoi" required="" style="width: 80px" onchange="returnYears()"><br>
         
-        <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px" onclick="location.href='./timbenhnhan.php';">Bệnh án cũ</button>
+        <button type="button" class="btn btn3" style="width: 85%;margin-top: 270px" onclick="location.href='./benhancu.php';">Bệnh án cũ</button>
 
         
 

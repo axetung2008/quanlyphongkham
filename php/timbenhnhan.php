@@ -2,7 +2,7 @@
   require_once 'config.php';
 
 	$conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
-
+  mysqli_set_charset($conn,"utf8");
 	$tenbenhnhan = $_POST['query'];
   	if (isset($tenbenhnhan)) {
       $sql = "SELECT * FROM benh_nhan WHERE ho_ten LIKE '$tenbenhnhan%'";

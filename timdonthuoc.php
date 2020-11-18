@@ -106,7 +106,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./quanlydonthuoc.php">Quay lại</a></li>
+        <li><a href="./benhancu.php">Quay lại</a></li>
       </ul>
     </div>
   </div>
@@ -225,7 +225,7 @@
      </script>
 
      </div>
-</div>
+    </div>
 
 
 
